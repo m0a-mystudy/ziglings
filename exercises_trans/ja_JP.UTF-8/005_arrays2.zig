@@ -1,20 +1,20 @@
 //
-// Zig has some fun array operators.
+// Zig には楽しい配列演算子があります。
 //
-// You can use '++' to concatenate two arrays:
+// '++'を使って2つの配列を連結することができます。
 //
 //   const a = [_]u8{ 1,2 };
 //   const b = [_]u8{ 3,4 };
-//   const c = a ++ b ++ [_]u8{ 5 }; // equals 1 2 3 4 5
+//   const c = a ++ b ++ [_]u8{ 5 }; // 1 2 3 4 5 になる
 //
-// You can use '**' to repeat an array:
+// 配列の繰り返しに '**' を使用することができます。
 //
-//   const d = [_]u8{ 1,2,3 } ** 2; // equals 1 2 3 1 2 3
+//   const d = [_]u8{ 1,2,3 } ** 2; // 1 2 3 1 2 3 になる
 //
-// Note that both '++' and '**' only operate on arrays while your
-// program is _being compiled_. This special time is known in Zig
-// parlance as "comptime" and we'll learn plenty more about that
-// later.
+// 注意点
+// '++' と '**' 両方とも、プログラムが「コンパイル時」だけ、 配列を操作できる点に注意してください。
+// この特別な時間をZigでは「comptime」と呼びます。
+// 後ほど詳しく説明します。
 //
 const std = @import("std");
 
@@ -22,25 +22,25 @@ pub fn main() void {
     const le = [_]u8{ 1, 3 };
     const et = [_]u8{ 3, 7 };
 
-    // (Problem 1)
-    // Please set this array concatenating the two arrays above.
-    // It should result in: 1 3 3 7
+    // (問題 1)
+    // 上の2つの配列を連結したものをセットしてください．
+    // 想定する結果:  1 3 3 7
     const leet = ???;
 
-    // (Problem 2)
-    // Please set this array using repetition.
-    // It should result in: 1 0 0 1 1 0 0 1 1 0 0 1
+    // (問題 2)
+    // この配列を繰り返しを使ってセットしてください．
+    // 想定する結果: 1 0 0 1 1 0 0 1 1 0 0 1
     const bit_pattern = [_]u8{ ??? } ** 3;
 
-    // Okay, that's all of the problems. Let's see the results.
+    // さて、これで問題は全部です。結果を見てみましょう。
     //
-    // We could print these arrays with leet[0], leet[1],...but let's
-    // have a little preview of Zig 'for' loops instead:
+    // これらの配列をleet[0], leet[1],...と表示することができます。
+    // 代わりにZig 'for'ループのプレビューを少し見てみましょう。
     //
-    //    for (<item array>) |item| { <do something with item> }
+    //    for (<itemを保持する配列>) |item| { <itemに対する何らかの処理> }
     //
-    // Don't worry, we'll cover looping properly in upcoming
-    // lessons.
+    // ご心配なく。ループ処理については、次回以降に説明します。
+    // 
     //
     std.debug.print("LEET: ", .{});
 
