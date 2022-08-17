@@ -1,35 +1,35 @@
 //
-// Quiz time! Let's see if you can fix this whole program.
+// クイズの時間だ! このプログラム全体を修正できるかどうか見てみましょう。
 //
-// You'll have to think about this one a bit.
+// これはちょっと考えてみてね。
 //
-// Let the compiler tell you what's wrong.
+// 何が間違っているのか、コンパイラに教えてもらいましょう。
 //
-// Start at the top.
+// 一番上から始めてください。
 //
 const std = @import("std");
 
 pub fn main() void {
-    // What is this nonsense? :-)
+    // なんじゃこりゃー(笑)
     const letters = "YZhifg";
 
-    // Note: usize is an unsigned integer type used for...sizes.
-    // The exact size of usize depends on the target CPU
-    // architecture. We could have used a u8 here, but usize is
-    // the idiomatic type to use for array indexing.
+    // 注意: usize はfor...sizesに使用される符号なし整数型である。
+    // usize の正確なサイズは、ターゲットとなる CPU
+    // アーキテクチャに依存する。ここでは u8 を使用することもできますが、usize は
+    // 配列のインデックス付けに使用される慣用的な型です。
     //
-    // There IS a problem on this line, but 'usize' isn't it.
+    // この行には問題があるが、'usize' は問題ではない。
     const x: usize = 1;
 
-    // Note: When you want to declare memory (an array in this
-    // case) without putting anything in it, you can set it to
-    // 'undefined'. There is no problem on this line.
+    // 注：メモリ（この場合は配列）を宣言する際に，
+    // 何も入れずに宣言する場合、
+    // 'undefined'を使います。この行は問題ありません。
     var lang: [3]u8 = undefined;
 
-    // The following lines attempt to put 'Z', 'i', and 'g' into the
-    // 'lang' array we just created by indexing the array
-    // 'letters' with the variable 'x'. As you can see above, x=1
-    // to begin with.
+    // 以下の行は、'Z'、'i'、'g'を、先ほど作成した配列 'lang' にインデックス付けしようとするものです。
+    // 'lang'配列のインデックスを作成し、'letter'配列を作成しました。
+    // 文字' を変数 'x' で指定します。上で見たように、x=1
+    // を指定しています。
     lang[0] = letters[x];
 
     x = 3;
@@ -38,6 +38,6 @@ pub fn main() void {
     x = ???;
     lang[2] = letters[???];
 
-    // We want to "Program in Zig!" of course:
+    // もちろん"Program in Zig!" がほしい:
     std.debug.print("Program in {s}!\n", .{lang});
 }

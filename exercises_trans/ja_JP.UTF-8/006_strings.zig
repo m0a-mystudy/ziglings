@@ -1,53 +1,53 @@
 //
-// Now that we've learned about arrays, we can talk about strings.
+// 配列について学んだので、文字列について話しましょう。
 //
-// We've already seen Zig string literals: "Hello world.\n"
+// Zig文字列リテラル「"Hello world.\n"」をすでに見たと思います
 //
-// Zig stores strings as arrays of bytes.
+// Zigは文字列をバイトの配列として格納します。
 //
 //     const foo = "Hello";
 //
-// Is almost* the same as:
+// 上記は以下とほぼ同じです。
 //
 //     const foo = [_]u8{ 'H', 'e', 'l', 'l', 'o' };
 //
-// (* We'll see what Zig strings REALLY are in Exercise 77.)
+// (* Zigの文字列が実際にどのようなものであるかは、Exercise 77 で確認します。)
 //
-// Notice how individual characters use single quotes ('H') and
-// strings use double quotes ("H"). These are not interchangeable!
+// 個々の文字がシングルクォート('H')を使用し、
+// 文字列がダブルクォート("H")を使用することに注意してください。これらは互換性がありません!
 //
 const std = @import("std");
 
 pub fn main() void {
     const ziggy = "stardust";
 
-    // (Problem 1)
-    // Use array square bracket syntax to get the letter 'd' from
-    // the string "stardust" above.
+    // (問題 1)
+    // 配列の角括弧構文を使って、上の文字列 "stardust" から文字 'd' を取得してください。
+    //
     const d: u8 = ziggy[???];
 
-    // (Problem 2)
-    // Use the array repeat '**' operator to make "ha ha ha ".
+    // (問題 2)
+    // 配列の繰り返し'**' 演算子を使って、"ha ha ha " を作ってください。
     const laugh = "ha " ???;
 
-    // (Problem 3)
-    // Use the array concatenation '++' operator to make "Major Tom".
-    // (You'll need to add a space as well!)
+    // (問題 3)
+    // 配列の連結 '++' 演算子を使用して "Major Tom"を作成してください。
+    // (スペースも必要です!)
     const major = "Major";
     const tom = "Tom";
     const major_tom = major ??? tom;
 
-    // That's all the problems. Let's see our results:
+    // 問題は以上です。結果を見てみましょう。
     std.debug.print("d={u} {s}{s}\n", .{ d, laugh, major_tom });
-    // Keen eyes will notice that we've put 'u' and 's' inside the '{}'
-    // placeholders in the format string above. This tells the
-    // print() function to format the values as a UTF-8 character and
-    // UTF-8 strings respectively. If we didn't do this, we'd see '100',
-    // which is the decimal number corresponding with the 'd' character
-    // in UTF-8. (And an error in the case of the strings.)
+    // よく見ると、上のフォーマット文字列の プレースホルダー'{}' の中に 'u' と 's'
+    // を入れていることに気づいたでしょうか？。これは
+    // print() 関数に、値をそれぞれ UTF-8 「文字」とUTF-8 「文字列」としてフォーマットするよう 
+    // 命令します。もしこれを行わなければ、'100'と表示されるでしょう。
+    // '100'は UTF-8 の 'd' 文字に対応する 10 進数です。
+    // (文字列の場合はエラーとなります）。
     //
-    // While we're on this subject, 'c' (ASCII encoded character)
-    // would work in place for 'u' because the first 128 characters
-    // of UTF-8 are the same as ASCII!
+    // この話題のついでに、'c' (ASCII エンコードされた文字) も 
+    // 'u' の代わりに使えます。これはUTF-8 の最初の 128 文字は
+    // ASCII と同じだからです。
     //
 }
