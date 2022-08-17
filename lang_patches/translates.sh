@@ -1,16 +1,6 @@
 #!/bin/bash
 #
-#     "I will be a shieldmaiden no longer,
-#      nor vie with the great Riders, nor
-#      take joy only in the songs of slaying.
-#      I will be a healer, and love all things
-#      that grow and are not barren."
-#             Éowyn, The Return of the King
-#
-#
-# このスクリプトは、このディレクトリにあるパッチを用いて、 小さな壊れたプログラムを修復するものである。
-# このディレクトリにあるパッチを使用して、それらを癒し
-# 回復させたディレクトリで療養させる。
+# Translates the language files
 #
 
 # We check ourselves before we wreck ourselves.
@@ -33,14 +23,10 @@ do
 
     if [ -f $patch_name ]
     then
-        # Apply the bandages to the wounds, grow new limbs, let
-        # new life spring into the broken bodies of the fallen.
         echo traslateing $true_name...
         patch $target < $patch_name
     else
-        echo Cannot heal $true_name. No patch found.
+        echo Cannot translate $true_name. No patch found.
     fi
 done
 
-# Test the healed exercises. May the compiler have mercy upon us.
-# zig build -Dhealed
