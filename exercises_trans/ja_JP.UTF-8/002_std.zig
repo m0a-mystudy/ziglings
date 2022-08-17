@@ -1,14 +1,14 @@
 //
-// Oops! This program is supposed to print a line like our Hello World
-// example. But we forgot how to import the Zig Standard Library.
+// おっと! このプログラムは、Hello World のような一文を表示することになっています。
+// しかし、Zig 標準ライブラリのインポート方法を忘れていました。
 //
-// The @import() function is built into Zig. It returns a value which
-// represents the imported code. It's a good idea to store the import as
-// a constant value with the same name as the import:
+// Zigには組み込み関数@import()があります。
+// @import()は、インポートしたコードを表す値を返します。
+// 以下のようにインポート名と同じ名前の定数値として保存するのがよいでしょう。
 //
-//     const foo = @import("foo");
+// const foo = @import("foo");
 //
-// Please complete the import below:
+// 以下、インポートを完成させてください。
 //
 
 ??? = @import("std");
@@ -16,9 +16,8 @@
 pub fn main() void {
     std.debug.print("Standard Library.\n", .{});
 }
-
-// For the curious: Imports must be declared as constants because they
-// can only be used at compile time rather than run time. Zig evaluates
-// constant values at compile time. Don't worry, we'll cover imports
-// in detail later.
-// Also see this answer: https://stackoverflow.com/a/62567550/695615
+// 好奇心旺盛なあなたへ: Imports は定数として宣言する必要があります。
+// 実行時ではなく、コンパイル時にのみ使用することができるからです。Zig はコンパイル時に
+// 定数値はコンパイル時に評価されます。心配しないでください、インポートについては後で詳しく説明します。
+// については後で詳しく説明します。
+// この回答も参照してください: https://stackoverflow.com/a/62567550/695615
