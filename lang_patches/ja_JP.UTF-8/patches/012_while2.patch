@@ -1,0 +1,42 @@
+2,5c2,5
+< // Zig 'while' statements can have an optional 'continue expression'
+< // which runs every time the while loop continues (either at the
+< // end of the loop or when an explicit 'continue' is invoked - we'll
+< // try those out next):
+---
+> // Zig 'while' ステートメントには、オプションで 'continue式' を指定することができます。
+> // これは while ループが継続するたびに実行されます 
+> //  (ループの終わり、もしくは明示的な 'continue' が実行された場合です。
+> // 次はそれを試してみましょう）
+7c7
+< //     while (condition) : (continue expression) {
+---
+> //     while (条件) : (continue式) {
+11c11
+< // Example:
+---
+> // 例:
+15c15
+< //         // Do something with even numbers less than 10...
+---
+> //         // 10未満の偶数で何かする...。
+18,19c18,19
+< // See if you can re-write the last exercise using a continue
+< // expression:
+---
+> // 前回の演習を continue 式を使って書き直せるかどうか試してみてください。
+> // 
+26,27c26,27
+<     // Please set the continue expression so that we get the desired
+<     // results in the print statement below.
+---
+>     // 望みの結果が得られるように continue 式を設定してください。
+>     // 以下のprint文の結果が得られるようにcontinue式を設定してください。
+29c29
+<         // Print the current number
+---
+>         // 現在の数値を表示する
+33c33
+<     // As in the last exercise, we want this to result in "n=1024"
+---
+>     // 前回の演習と同様に、"n=1024 "という表示になるようにします。

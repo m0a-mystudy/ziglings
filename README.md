@@ -1,4 +1,6 @@
-# 翻訳機能追加
+# Ziglings
+
+## 翻訳機能追加版
 
 コードの翻訳を追加してます。
 
@@ -7,9 +9,12 @@
 ```
 ./lang_patches/translates.sh
 ```
+
+あとはそのままzig build コマンド等はそのまま使えます
+
 その他の情報はlang_patches/README.mdを参照ください
 
-# Ziglings
+---
 
 Welcome to Ziglings! This project contains a series of tiny broken programs.
 By fixing them, you'll learn how to read and write

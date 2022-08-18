@@ -1,0 +1,28 @@
+2c2
+< // You can force a loop to exit immediately with a "break" statement:
+---
+> // "break "ステートメントでループを強制終了させることができる。
+4c4
+< //     while (condition) : (continue expression) {
+---
+> //     while (条件) : (continue式) {
+6c6
+< //         if (other condition) break;
+---
+> //         if (他の条件) break;
+10,11c10,11
+< // Continue expressions do NOT execute when a while loop stops
+< // because of a break!
+---
+> // whileループがブレークして停止した場合、Continue式は「実行されません」。
+> // 
+18,19c18,19
+<     // Oh dear! This while loop will go forever?!
+<     // Please fix this so the print statement below gives the desired output.
+---
+>     // なんということでしょう! この while ループは永遠に続くのですか!
+>     // 以下の print 文が望ましい出力をするように、これを修正してください。
+24c24
+<     // Result: we want n=4
+---
+>     // 結果：n=4 が欲しい

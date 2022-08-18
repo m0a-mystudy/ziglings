@@ -1,29 +1,29 @@
 //
-// The last two exercises were functionally identical. Continue
-// expressions really show their utility when used with 'continue'
-// statements!
+// 最後の2つのエクササイズは、機能的に同じものでした。Continue
+// 式は、「continue文」 と一緒に使うと、その有用性を発揮します。
+// 
 //
-// Example:
+// 例:
 //
-//     while (condition) : (continue expression) {
+//     while (条件) : (continue式) {
 //
-//         if (other condition) continue;
+//         if (他の条件) continue; // <--これがcontinue文
 //
 //     }
 //
-// The "continue expression" executes every time the loop restarts
-// whether the "continue" statement happens or not.
+// 「continue 式」は、ループが再スタートするたびに実行され
+// 「continue 文」が発生してもしなくても実行されます
 //
 const std = @import("std");
 
 pub fn main() void {
     var n: u32 = 1;
 
-    // I want to print every number between 1 and 20 that is NOT
-    // divisible by 3 or 5.
+    // 1 から 20 までの数字で、3 または 5 で割り切れないものをすべて表示したい。
+    // 
     while (n <= 20) : (n += 1) {
-        // The '%' symbol is the "modulo" operator and it
-        // returns the remainder after division.
+        // '%' 記号は「モジュロ」演算子で、除算後の余りを返す。
+        // 
         if (n % 3 == 0) ???;
         if (n % 5 == 0) ???;
         std.debug.print("{} ", .{n});
