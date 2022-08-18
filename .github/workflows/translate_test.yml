@@ -1,8 +1,12 @@
 name: translate test
 on:
-  pull_request:
-    branches: 
-      - m0a/feature/**
+  push:
+    branches:
+      - "m0a/feature/**"
+# on:
+#   pull_request:
+#     branches: 
+#       - m0a/feature/**
 
 defaults:
   run:
