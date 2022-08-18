@@ -1,0 +1,10 @@
+2c2
+< // If statements are also valid expressions:
+---
+> //  If文も有効な式です。
+11,12c11,12
+<     // Please use an if...else expression to set "price".
+<     // If discount is true, the price should be $17, otherwise $20:
+---
+>     // "価格 "を設定するには、if...else式を使用してください。
+>     // discountがtrueの場合は$17、そうでない場合は$20にします
