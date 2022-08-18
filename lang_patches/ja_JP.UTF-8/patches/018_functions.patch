@@ -1,0 +1,34 @@
+2,3c2,3
+< // Functions! We've already created lots of functions called 'main()'. Now let's
+< // do something different:
+---
+> // 関数! すでに 'main()' と呼ばれる関数をたくさん作りました。では
+> // 違うことをしてみましょう。
+9,10c9,10
+< // The foo() function above takes a number 'n' and returns a number that is
+< // larger by one.
+---
+> // 上の foo() 関数は、数値 'n' を受け取り、それを 1 つ大きくした数値を返します。
+> // 
+12c12
+< // Note the input parameter 'n' and return types are both u8.
+---
+> // 入力パラメータ 'n' と戻り値の型は共に u8 であることに注意。
+17c17
+<     // The new function deepThought() should return the number 42. See below.
+---
+>     // 新しい関数 deepThought() は、42 という数字を返すはずです。以下を参照してください。
+23c23
+< // Please define the deepThought() function below.
+---
+> // 以下、deepThought()関数を定義してください。
+25,26c25,26
+< // We're just missing a couple things. One thing we're NOT missing is the
+< // keyword "pub", which is not needed here. Can you guess why?
+---
+> // いくつか足りないものがあります。不足していないものの1つは
+> // キーワード "pub" はここでは必要ありません。なぜかわかりますか？
+29c29
+<     return 42; // Number courtesy Douglas Adams
+---
+>     return 42; //  番号提供：ダグラス・アダムス
