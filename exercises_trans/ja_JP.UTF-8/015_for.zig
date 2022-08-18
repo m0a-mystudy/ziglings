@@ -1,10 +1,10 @@
 //
-// Behold the 'for' loop! For loops let you execute code for each
-// element of an array:
+// 'for'ループを見てください! 
+// for ループでは、配列の各要素に対してコードを実行することができます。
 //
 //     for (items) |item| {
 //
-//         // Do something with item
+//         // itemに対して何かを行う
 //
 //     }
 //
@@ -23,5 +23,5 @@ pub fn main() void {
 
     std.debug.print("The End.\n", .{});
 }
-// Note that "for" loops also work on things called "slices"
-// which we'll see later.
+// forループは「slices」と呼ばれるものに対しても機能することに注意。
+// これは後で見ることになります。

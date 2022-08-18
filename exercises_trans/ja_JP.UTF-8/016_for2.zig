@@ -1,33 +1,34 @@
 //
-// For loops also let you store the "index" of the iteration - a
-// number starting with 0 that counts up with each iteration:
+// for ループでは、反復処理の「index」を保存することもできます。
+// indexとは0から始まり、反復ごとにカウントアップしていく数値です。
 //
 //     for (items) |item, index| {
 //
-//         // Do something with item and index
+//         // item と index を使って何かをする
 //
 //     }
+
 //
-// You can name "item" and "index" anything you want. "i" is a popular
-// shortening of "index". The item name is often the singular form of
-// the items you're looping through.
+// "item" と "index" には好きな名前を付けることができます。"i "はよく使われる
+// index "の短縮形です。アイテム名は多くの場合、ループするアイテムの単数形です。
+// 
 //
 const std = @import("std");
 
 pub fn main() void {
-    // Let's store the bits of binary number 1101 in
-    // 'little-endian' order (least significant byte first):
+    // 2進数1101のビットを以下のように
+    // 「リトルエンディアン」順（最下位バイトが先）に格納しましょう。
     const bits = [_]u8{ 1, 0, 1, 1 };
     var value: u32 = 0;
 
-    // Now we'll convert the binary bits to a number value by adding
-    // the value of the place as a power of two for each bit.
+    // ここで、2進数のビットを数値の値に変換するために、足し算をします。
+    // 各ビットの2の累乗として場の値を計算します。
     //
-    // See if you can figure out the missing piece:
+    // 欠けている部分がわかりますか？
     for (bits) |bit, ???| {
-        // Note that we convert the usize i to a u32 with
-        // @intCast(), a builtin function just like @import().
-        // We'll learn about these properly in a later exercise.
+        // usize型の i を u32型 に変換することに注意してください。
+        // @intCast() という、@import()と同じ組み込み関数を使っています。
+        // これについては、後の演習できちんと学びます。
         var place_value = std.math.pow(u32, 2, @intCast(u32, i));
         value += place_value * bit;
     }
