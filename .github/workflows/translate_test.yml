@@ -13,8 +13,13 @@ defaults:
     shell: bash
 
 jobs:
-  build:
+  translate_test:
     name: translate test
+    strategy:
+      matrix:
+        lang: ["ja_JP.UTF-8"]
+    env: 
+      LANG: ${{ matrix.lang }}
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
@@ -22,5 +27,5 @@ jobs:
       uses: goto-bus-stop/setup-zig@v1.3.0
       with:
         version: master
-    - run: LANG=ja_JP.UTF-8 && lang_patches/translate.sh
+    - run: lang_patches/translate.sh
     - run: patches/eowyn.sh
