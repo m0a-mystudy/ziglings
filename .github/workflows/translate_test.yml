@@ -27,12 +27,9 @@ jobs:
       uses: goto-bus-stop/setup-zig@v1.3.0
       with:
         version: master
+
     - run: |
-          echo "ths is env=$LANG"
-      env: 
-        LANG: ${{ matrix.lang }}
-    - run: |
-          lang_patches/translate.sh
+          export LANG=${{ env.LANG }} && lang_patches/translate.sh
       env: 
         LANG: ${{ matrix.lang }}
     - run: patches/eowyn.sh
