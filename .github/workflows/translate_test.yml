@@ -1,0 +1,28 @@
+name: Eowyn
+on:
+  pull_request:
+    branches: 
+      - m0a/feature/**
+  schedule:
+    - cron: "0 0 * * *"
+  workflow_dispatch:
+
+defaults:
+  run:
+    shell: bash
+
+jobs:
+  build:
+    strategy:
+      matrix:
+        os: [ubuntu-latest, windows-latest, macos-latest]
+    runs-on: ${{ matrix.os }}
+    steps:
+    - uses: actions/checkout@v2
+    - name: Setup Zig
+      uses: goto-bus-stop/setup-zig@v1.3.0
+      with:
+        version: master
+    - name: LANG=ja_JP.UTF-8
+      run:  LANG=ja_JP.UTF-8 && lang_patches/translate.sh
+    - run: patches/eowyn.sh
