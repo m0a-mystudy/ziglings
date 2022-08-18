@@ -1,3 +1,14 @@
+# 翻訳機能追加
+
+コードの翻訳を追加してます。
+
+以下のコマンドでコードのコメント部分に翻訳を適用して行きます
+
+```
+./lang_patches/translates.sh
+```
+その他の情報はlang_patches/README.mdを参照ください
+
 # Ziglings
 
 Welcome to Ziglings! This project contains a series of tiny broken programs.
