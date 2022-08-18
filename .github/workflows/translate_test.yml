@@ -1,13 +1,11 @@
 name: translate test
-on:
-  push:
-    branches:
-      - "m0a/feature/**"
 # on:
-#   pull_request:
-#     branches: 
-#       - m0a/feature/**
-
+#   push:
+#     branches:
+#       - "m0a/**"
+on:
+  pull_request:
+    branches: [ main ]
 defaults:
   run:
     shell: bash
