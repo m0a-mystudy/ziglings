@@ -1,0 +1,33 @@
+name: translate test
+on:
+  push:
+    branches:
+      - "m0a/feature/**"
+# on:
+#   pull_request:
+#     branches: 
+#       - m0a/feature/**
+
+defaults:
+  run:
+    shell: bash
+
+jobs:
+  translate_test:
+    name: translate test
+    strategy:
+      matrix:
+        lang: ["ja_JP.UTF-8"]
+    env: 
+      LANG: ${{ matrix.lang }}
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: Setup Zig
+      uses: goto-bus-stop/setup-zig@v1.3.0
+      with:
+        version: master
+    - run: lang_patches/translates.sh
+      env: 
+        LANG: ${{ matrix.lang }}
+    - run: patches/eowyn.sh
