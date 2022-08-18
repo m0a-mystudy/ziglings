@@ -1,26 +1,26 @@
 //
-// You can force a loop to exit immediately with a "break" statement:
+// "break "ステートメントでループを強制終了させることができる。
 //
-//     while (condition) : (continue expression) {
+//     while (条件) : (continue式) {
 //
-//         if (other condition) break;
+//         if (他の条件) break;
 //
 //     }
 //
-// Continue expressions do NOT execute when a while loop stops
-// because of a break!
+// whileループがブレークして停止した場合、Continue式は「実行されません」。
+// 
 //
 const std = @import("std");
 
 pub fn main() void {
     var n: u32 = 1;
 
-    // Oh dear! This while loop will go forever?!
-    // Please fix this so the print statement below gives the desired output.
+    // なんということでしょう! この while ループは永遠に続くのですか!
+    // 以下の print 文が望ましい出力をするように、これを修正してください。
     while (true) : (n += 1) {
         if (???) ???;
     }
 
-    // Result: we want n=4
+    // 結果：n=4 が欲しい
     std.debug.print("n={}\n", .{n});
 }

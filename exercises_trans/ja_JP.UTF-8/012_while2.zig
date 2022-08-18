@@ -1,35 +1,35 @@
 //
-// Zig 'while' statements can have an optional 'continue expression'
-// which runs every time the while loop continues (either at the
-// end of the loop or when an explicit 'continue' is invoked - we'll
-// try those out next):
+// Zig 'while' ステートメントには、オプションで 'continue式' を指定することができます。
+// これは while ループが継続するたびに実行されます 
+//  (ループの終わり、もしくは明示的な 'continue' が実行された場合です。
+// 次はそれを試してみましょう）
 //
-//     while (condition) : (continue expression) {
+//     while (条件) : (continue式) {
 //         ...
 //     }
 //
-// Example:
+// 例:
 //
 //     var foo = 2;
 //     while (foo < 10) : (foo += 2) {
-//         // Do something with even numbers less than 10...
+//         // 10未満の偶数で何かする...。
 //     }
 //
-// See if you can re-write the last exercise using a continue
-// expression:
+// 前回の演習を continue 式を使って書き直せるかどうか試してみてください。
+// 
 //
 const std = @import("std");
 
 pub fn main() void {
     var n: u32 = 2;
 
-    // Please set the continue expression so that we get the desired
-    // results in the print statement below.
+    // 望みの結果が得られるように continue 式を設定してください。
+    // 以下のprint文の結果が得られるようにcontinue式を設定してください。
     while (n < 1000) : ??? {
-        // Print the current number
+        // 現在の数値を表示する
         std.debug.print("{} ", .{n});
     }
 
-    // As in the last exercise, we want this to result in "n=1024"
+    // 前回の演習と同様に、"n=1024 "という表示になるようにします。
     std.debug.print("n={}\n", .{n});
 }
