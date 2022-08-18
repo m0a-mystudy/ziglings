@@ -1,34 +1,34 @@
 //
-// Zig 'while' statements create a loop that runs while the
-// condition is true. This runs once (at most):
+// Zig 'while' ステートメントを使用すると、ループを作成することができます。
+// 条件が真である間実行されるループを作成します。これは（最大で）一度だけ実行されます。
 //
 //     while (condition) {
 //         condition = false;
 //     }
 //
-// Remember that the condition must be a boolean value and
-// that we can get a boolean value from conditional operators
-// such as:
+// 条件が論理値でなければならないこと、そして
+// 条件演算子から真偽値を得ることができることを思い出してください。
+// 以下が条件演算子の例です。
 //
-//     a == b   means "a equals b"
-//     a < b    means "a is less than b"
-//     a > b    means "a is greater than b"
-//     a != b   means "a does not equal b"
+//     a == b は "a と b は等しい" を意味する。
+//     a < b  は "a は b より小さい" を意味する。
+//     a > b  は "a は b より大きい" を意味する。
+//     a != b は "a は b と等しくない" を意味する。
 //
 const std = @import("std");
 
 pub fn main() void {
     var n: u32 = 2;
 
-    // Please use a condition that is true UNTIL "n" reaches 1024:
+    // n "が1024になった時点で真となる条件を使用してください。
     while (???) {
-        // Print the current number
+        //  現在の数値を表示する
         std.debug.print("{} ", .{n});
 
-        // Set n to n multiplied by 2
+        // nに2を掛けたものをnに設定する
         n *= 2;
     }
 
-    // Once the above is correct, this will print "n=1024"
+    // 上記が正しく表示されると、"n=1024 "と表示されます。
     std.debug.print("n={}\n", .{n});
 }
