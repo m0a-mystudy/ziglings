@@ -1,10 +1,10 @@
 //
-// Using `catch` to replace an error with a default value is a bit
-// of a blunt instrument since it doesn't matter what the error is.
+// エラーをデフォルト値に置き換えるために `catch` を使用することは、
+// エラーが何であるかが重要ではないので、少し乱暴な手段です。
 //
-// Catch lets us capture the error value and perform additional
-// actions with this form:
-//
+// catch を使用すると、エラー値をキャプチャして、このフォームで
+// 追加のアクションを実行できます。
+// 
 //     canFail() catch |err| {
 //         if (err == FishError.TunaMalfunction) {
 //             ...
@@ -19,8 +19,8 @@ const MyNumberError = error{
 };
 
 pub fn main() void {
-    // The "catch 0" below is a temporary hack to deal with
-    // makeJustRight()'s returned error union (for now).
+    // 以下の「catch 0」は、makeJustRight()が返したエラーユニオンに対処するための
+    // 一時的なハックです(今のところ)。
     var a: u32 = makeJustRight(44) catch 0;
     var b: u32 = makeJustRight(14) catch 0;
     var c: u32 = makeJustRight(4) catch 0;
@@ -28,13 +28,13 @@ pub fn main() void {
     std.debug.print("a={}, b={}, c={}\n", .{ a, b, c });
 }
 
-// In this silly example we've split the responsibility of making
-// a number just right into four (!) functions:
+// この愚かな例では、数を正しく作る責任を
+// 4つの関数に分割しています。
 //
-//     makeJustRight()   Calls fixTooBig(), cannot fix any errors.
-//     fixTooBig()       Calls fixTooSmall(), fixes TooBig errors.
-//     fixTooSmall()     Calls detectProblems(), fixes TooSmall errors.
-//     detectProblems()  Returns the number or an error.
+//     makeJustRight()   fixTooBig() を呼び出し、エラーを修正することはできない。
+//     fixTooBig()       fixTooSmall() を呼び出し、TooBigエラーを修正する。
+//     fixTooSmall()     detectProblems() をコールし、小さすぎるエラーを修正する。
+//     detectProblems()  数値またはエラーを返します。
 //
 fn makeJustRight(n: u32) MyNumberError!u32 {
     return fixTooBig(n) catch |err| {
@@ -53,12 +53,12 @@ fn fixTooBig(n: u32) MyNumberError!u32 {
 }
 
 fn fixTooSmall(n: u32) MyNumberError!u32 {
-    // Oh dear, this is missing a lot! But don't worry, it's nearly
-    // identical to fixTooBig() above.
+    // やれやれ、これでは足りないですねぇ。でも心配しないでください、これはほとんど
+    // 上の fixTooBig() と同じです。
     //
-    // If we get a TooSmall error, we should return 10.
-    // If we get any other error, we should return that error.
-    // Otherwise, we return the u32 number.
+    // TooSmall エラーが発生したら、10 を返すようにします。
+    // その他のエラーが発生した場合は、そのエラーを返します。
+    // それ以外の場合は、u32 の数値を返します。
     return detectProblems(n) ???;
 }
 

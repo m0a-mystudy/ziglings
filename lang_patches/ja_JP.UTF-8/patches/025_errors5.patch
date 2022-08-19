@@ -1,0 +1,14 @@
+2c2
+< // Zig has a handy "try" shortcut for this common error handling pattern:
+---
+> // Zig には、この一般的なエラー処理パターンに対する便利な「try」ショートカットがあります。
+6c6
+< // which can be more compactly written as:
+---
+> // 上記はよりコンパクトに次のように書くことができます。
+26,27c26,27
+<     // This function needs to return any error which might come back from detect().
+<     // Please use a "try" statement rather than a "catch".
+---
+>     // この関数は、detect()から返ってくるかもしれないあらゆるエラーを返す必要がある。
+>     // "catch "ではなく、"try "ステートメントを使用してください。
