@@ -1,31 +1,31 @@
 //
-// Now let's use pointers to do something we haven't been
-// able to do before: pass a value by reference to a function.
+// では、ポインターを使用して、これまでできなかったことを行ってみましょう。
+// 関数に値を参照渡しましょう。
 //
-// Why would we wish to pass a pointer to an integer variable
-// rather than the integer value itself? Because then we are
-// allowed to *change* the value of the variable!
+// なぜ整数型変数へのポインタを渡したいのでしょう？
+// なぜ整数値そのものではなく、整数型変数へのポインタを渡したいのでしょうか？なぜなら、そうすれば
+// 変数の値を *変更* することができるからです!
 //
-//     +-----------------------------------------------+
-//     | Pass by reference when you want to change the |
-//     | pointed-to value. Otherwise, pass the value.  |
-//     +-----------------------------------------------+
-//
+// +-----------------------------------------------+
+// | 指された値を変更したい場合は、参照渡しとする。        |
+// | それ以外の場合は、値を渡す。                       |
+// +-----------------------------------------------+
+
 const std = @import("std");
 
 pub fn main() void {
     var num: u8 = 1;
     var more_nums = [_]u8{ 1, 1, 1, 1 };
 
-    // Let's pass a reference to num to our function and print it:
+    // numの参照を関数に渡し、それを表示してみましょう。
     makeFive(&num);
     std.debug.print("num: {}, ", .{num});
 
-    // Now something interesting. Let's pass a reference to a
-    // specific array value:
+    // さて、面白いことがあります。特定の配列の値への
+    // 参照を渡してみましょう。
     makeFive(&more_nums[2]);
 
-    // And print the array:
+    // そして、その配列を出力する。
     std.debug.print("more_nums: ", .{});
     for (more_nums) |n| {
         std.debug.print("{} ", .{n});
@@ -34,8 +34,8 @@ pub fn main() void {
     std.debug.print("\n", .{});
 }
 
-// This function should take a reference to a u8 value and set it
-// to 5.
+// この関数は、u8 値への参照を取り、それを 5 に設定する必要があります。
+// 
 fn makeFive(x: *u8) void {
     ??? = 5; // fix me!
 }

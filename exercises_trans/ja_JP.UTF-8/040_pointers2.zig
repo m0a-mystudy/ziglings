@@ -1,27 +1,27 @@
 //
-// It's important to note that variable pointers and constant pointers
-// are different types.
+// 注意すべきは、変数ポインタと定数ポインタは
+// は異なる型であることに注意が必要です。
 //
-// Given:
+// 以下のように宣言されているとします。
 //
 //     var foo: u8 = 5;
 //     const bar: u8 = 5;
 //
-// Then:
+// その場合
 //
-//     &foo is of type "*u8"
-//     &bar is of type "*const u8"
+//     &foo は "*u8" 型である。
+//     &bar は "*const u8" 型である。
 //
-// You can always make a constant pointer to a variable, but you cannot
-// make a variable pointer to a constant. This sounds like a logic puzzle,
-// but it just means that once data is declared immutable, you can't
-// coerce it to a mutable type. It's a safety thing (to prevent mistakes).
-//
+// 変数への定数ポインタは常に作成可能ですが、定数への変数ポインタは作成できません。
+// これは論理パズルのように聞こえる。
+// しかし、これは、いったんデータが不変であると宣言されると、 
+// 変数へのポインタを強制することはできない、ということを意味しています。
+// これは安全性のため（間違いを防ぐため）です。
 const std = @import("std");
 
 pub fn main() void {
     const a: u8 = 12;
-    const b: *u8 = &a; // fix this!
+    const b: *u8 = &a; // 直して！
 
     std.debug.print("a: {}, b: {}\n", .{ a, b.* });
 }

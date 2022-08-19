@@ -1,0 +1,50 @@
+2,4c2,4
+< // Grouping values in structs is not merely convenient. It also allows
+< // us to treat the values as a single item when storing them, passing
+< // them to functions, etc.
+---
+> // 構造体で値をグループ化することは、単に便利なだけではありません。
+> // 値を格納したり、関数に渡したりする際に、値を1つのアイテムとして扱うことができます。
+> // 
+6,7c6,7
+< // This exercise demonstrates how we can store structs in an array and
+< // how doing so lets us print them using a loop.
+---
+> // この演習では、構造体を配列に格納する方法と、配列に格納することで、
+> // ループを使用して構造体を表示する方法を示します。
+28c28
+<     // Glorp the Wise
+---
+>     // 賢者Glorp
+36c36
+<     // Please add "Zump the Loud" with the following properties:
+---
+>     // 以下のプロパティを持つ "Zump the Loud "を追加してください。
+38,39c38,39
+<     //     class      bard
+<     //     gold       10
+---
+>     //     class      bard // 吟遊詩人
+>     //     gold       10  
+43,44c43,44
+<     // Feel free to run this program without adding Zump. What does
+<     // it do and why?
+---
+>     // このプログラムは、Zumpを追加せずに実行できます
+>     // その場合何をするのか？そして、それはなぜなのか？
+46c46
+<     // Printing all RPG characters in a loop:
+---
+>     // RPGの全キャラクターをループで出力する。
+54,58c54,58
+< // If you tried running the program without adding Zump as mentioned
+< // above, you get what appear to be "garbage" values. In debug mode
+< // (which is the default), Zig writes the repeating pattern "10101010"
+< // in binary (or 0xAA in hex) to all undefined locations to make them
+< // easier to spot when debugging.
+---
+> // 上記のようにZumpを追加せずにプログラムを実行した場合
+> // ゴミのような値が表示されます。デバッグモードでは
+> // Zigはバイナリで "10101010 "という繰り返しパターンをすべての未定義の場所に書き込みます。
+> // デバッグ時に発見しやすくするために、すべての未定義の場所にバイナリ（16進数では0xAA）で 書き込みます。
+> // デバッグ時に発見しやすくします。
