@@ -1,24 +1,24 @@
 //
-// Check this out:
+// これを見てください。
 //
-//     var foo: u8 = 5;      // foo is 5
-//     var bar: *u8 = &foo;  // bar is a pointer
+//     var foo: u8 = 5;      // foo は 5 です。
+//     var bar: *u8 = &foo;  // bar はポインタです。
 //
-// What is a pointer? It's a reference to a value. In this example
-// bar is a reference to the memory space that currently contains the
-// value 5.
+// ポインタとは何でしょうか？ある値への参照です。この例では
+// bar は、現在値 5 が格納されているメモリ空間への参照です。
+// 
 //
-// A cheatsheet given the above declarations:
+// 上記の宣言が与えられた場合のチートシート。
 //
-//     u8         the type of a u8 value
-//     foo        the value 5
-//     *u8        the type of a pointer to a u8 value
-//     &foo       a reference to foo
-//     bar        a pointer to the value at foo
-//     bar.*      the value 5 (the dereferenced value "at" bar)
+//     u8         u8 値の型
+//     foo        値 5
+//     *u8        u8 値へのポインタの型
+//     &foo       foo への参照
+//     bar        foo の値へのポインタ
+//     bar.*      値 5 (参照先 bar の値)
 //
-// We'll see why pointers are useful in a moment. For now, see if you
-// can make this example work!
+// ポインタがなぜ便利なのかは、すぐにわかります。とりあえず、この例がうまくいくかどうか見てみましょう。
+// 
 //
 const std = @import("std");
 
@@ -28,8 +28,8 @@ pub fn main() void {
 
     var num2: u8 = undefined;
 
-    // Please make num2 equal 5 using num1_pointer!
-    // (See the "cheatsheet" above for ideas.)
+    // num1_pointer を使って、num2 が 5 になるようにしてください!
+    // (アイデアについては、上記の "チートシート" を参照してください。)
     num2 = ???;
 
     std.debug.print("num1: {}, num2: {}\n", .{ num1, num2 });

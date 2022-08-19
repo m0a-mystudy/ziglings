@@ -1,5 +1,5 @@
 //
-// Being able to group values together lets us turn this:
+// 値をグループ化することができるので、これを変えてみましょう。
 //
 //     point1_x = 3;
 //     point1_y = 16;
@@ -8,21 +8,21 @@
 //     point2_y = 13;
 //     point2_z = 34;
 //
-// into this:
+// 上記は以下にできます。
 //
 //     point1 = Point{ .x=3, .y=16, .z=27 };
 //     point2 = Point{ .x=7, .y=13, .z=34 };
 //
-// The Point above is an example of a "struct" (short for "structure").
-// Here's how that struct type could have been defined:
+// 上のPointは「struct」（「構造体」の略）の一例です。
+// そのstruct型の定義方法は以下の通りです。
 //
 //     const Point = struct{ x: u32, y: u32, z: u32 };
 //
-// Let's store something fun with a struct: a roleplaying character!
+// 構造体に、ロールプレイングキャラクターを格納しましょう。
 //
 const std = @import("std");
 
-// We'll use an enum to specify the character class.
+//キャラクタクラスを指定するためにenumを使用することにします。
 const Class = enum {
     wizard,
     thief,
@@ -30,8 +30,8 @@ const Class = enum {
     warrior,
 };
 
-// Please add a new property to this struct called "health" and make
-// it a u8 integer type.
+// この構造体に "health "という新しいプロパティを追加し、
+// u8整数型にしてください。
 const Character = struct {
     class: Class,
     gold: u32,
@@ -39,17 +39,17 @@ const Character = struct {
 };
 
 pub fn main() void {
-    // Please initialize Glorp with 100 health.
+    // Glorpの体力を100に初期化してください。
     var glorp_the_wise = Character{
         .class = Class.wizard,
         .gold = 20,
         .experience = 10,
     };
 
-    // Glorp gains some gold.
+    // Glorpがゴールドを獲得。
     glorp_the_wise.gold += 5;
 
-    // Ouch! Glorp takes a punch!
+    // 痛っ! Glorpがパンチを食らった!
     glorp_the_wise.health -= 10;
 
     std.debug.print("Your wizard has {} health and {} gold.\n", .{

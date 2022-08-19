@@ -1,64 +1,64 @@
 //
-//    "We live on a placid island of ignorance in the midst
-//     of black seas of infinity, and it was not meant that
-//     we should voyage far."
+//    "私たちは無知の島に住んでいる。
+//     無限の海の中にある 無知の島に住んでいるのだ
+//     遠くへ旅立つべきでない"
 //
-//     from The Call of Cthulhu
-//       by H. P. Lovecraft
+//     クトゥルフの呼び声より
+//       H.P.ラヴクラフト著
 //
-// Zig has at least four ways of expressing "no value":
+// Zigには「値がない」という表現が少なくとも4つある。
 //
-// * undefined
+// * undefined(未定義)
 //
 //       var foo: u8 = undefined;
 //
-//       "undefined" should not be thought of as a value, but as a way
-//       of telling the compiler that you are not assigning a value
-//       _yet_. Any type may be set to undefined, but attempting
-//       to read or use that value is _always_ a mistake.
+//       "undefined "は値として考えるべきではない。
+//       コンパイラに値を「まだ」代入していないことを伝える方法である。
+//       どのような型でも未定義に設定することができるが、
+//       その値を読み取ったり使用したりしようとすることは「常に」間違いである。
 //
 // * null
 //
 //       var foo: ?u8 = null;
 //
-//       The "null" primitive value _is_ a value that means "no value".
-//       This is typically used with optional types as with the ?u8
-//       shown above. When foo equals null, that's not a value of type
-//       u8. It means there is _no value_ of type u8 in foo at all!
+//       nullは「値がない」ことを意味するプリミティブな値である。
+//       これは通常、上述した ?u8 と同様オプショナルな型に使われる
+//       fooがnullに等しいとき、それはu8型の値ではない
+//       これは、foo の中に u8 型の値がまったく存在しないことを意味する。
 //
 // * error
 //
 //       var foo: MyError!u8 = BadError;
 //
-//       Errors are _very_ similar to nulls. They _are_ a value, but
-//       they usually indicate that the "real value" you were looking
-//       for does not exist. Instead, you have an error. The example
-//       error union type of MyError!u8 means that foo either holds
-//       a u8 value OR an error. There is _no value_ of type u8 in foo
-//       when it's set to an error!
+//       エラーはnullと「非常によく」似ている。それらは値であるが
+//       探していた「本当の値」が存在しないことを示す。
+//       その代わりに、エラーを保持している。この例では
+//       エラーユニオン型である MyError!u8 は、foo が u8 の値か、
+//       エラーかのどちらかを保持していることを意味する。
+//       エラーに設定されているとき、foo には u8 型の値は存在しない。
 //
 // * void
 //
 //       var foo: void = {};
 //
-//       "void" is a _type_, not a value. It is the most popular of the
-//       Zero Bit Types (those types which take up absolutely no space
-//       and have only a semantic value. When compiled to executable
-//       code, zero bit types generate no code at all. The above example
-//       shows a variable foo of type void which is assigned the value
-//       of an empty expression. It's much more common to see void as
-//       the return type of a function that returns nothing.
+//       "void "は値ではなく 「型」 である。これは、最も一般的な
+//       ゼロビット型（全くスペースを取らず、意味的な値のみを持つ型）の中で最もよく知られている。
+//       実行可能なコードにコンパイルされたとき、
+//       ゼロビット型はまったくコードを生成しない。上の例では
+//       void 型の変数 foo には，空の式が代入されている。
+//       void 型は何も返さない関数の戻り値の型として見るのがもっとも一般的である。
+//       
 //
-// Zig has all of these ways of expressing different types of "no value"
-// because they each serve a purpose. Briefly:
+// Zig では、このようにさまざまなタイプの「値がない」ことを表現する方法がある。
+// なぜなら、それぞれに目的があるからである。簡単に説明すると
 //
-//   * undefined - there is no value YET, this cannot be read YET
-//   * null      - there is an explicit value of "no value"
-//   * errors    - there is no value because something went wrong
-//   * void      - there will NEVER be a value stored here
+//   * undefined - 値がない、まだ読めない。
+//   * null      - "値なし "という明示的な値が存在する。
+//   * errors    - 何か問題が発生したため、値が存在しない。
+//   * void      - ここに値が格納されることは決してない。
 //
-// Please use the correct "no value" for each ??? to make this program
-// print out a cursed quote from the Necronomicon. ...If you dare.
+// このプログラムを作るために、それぞれの "no value "に正しい値を使用しよう。
+// このコードはネクロノミコンからの呪いの引用をプリントアウトします。...あえて言うなら
 //
 const std = @import("std");
 
@@ -71,7 +71,7 @@ pub fn main() void {
     var first_line2: Err!*const [21]u8 = ???;
     first_line2 = "which can eternal lie";
 
-    // Note we need the "{!s}" format for the error union string.
+    // エラーユニオンの文字列には、"{!s}"のフォーマットが必要であることに注意してください。
     std.debug.print("{s} {!s} / ", .{ first_line1, first_line2 });
 
     printSecondLine();

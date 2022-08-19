@@ -1,27 +1,27 @@
 //
-// Now that we have optional types, we can apply them to structs.
-// The last time we checked in with our elephants, we had to link
-// all three of them together in a "circle" so that the last tail
-// linked to the first elephant. This is because we had NO CONCEPT
-// of a tail that didn't point to another elephant!
+// オプショナルの型ができたので、構造体に適用することができます。
+// 前回、象をチェックインしたときに、3頭ともリンクさせる必要がありました。
+// 最後の尻尾が最初の象にリンクするように、3頭の象を「輪」にする必要がありました。
+// これは、私たちが他の象を指していない尻尾
+// という概念を持っていなかったからです。
 //
-// We also introduce the handy ".?" shortcut:
+// 便利な ".?" というショートカットも紹介します。
 //
 //     const foo = bar.?;
 //
-// is the same as
+// 上記シュートカットは以下と同じです。
 //
 //     const foo = bar orelse unreachable;
 //
-// See if you can find where we use this shortcut below.
+// 以下、このショートカットを使っている箇所を探してみてください。
 //
-// Now let's make those elephant tails optional!
+// では、象の尻尾をオプショナルにしましょう!
 //
 const std = @import("std");
 
 const Elephant = struct {
     letter: u8,
-    tail: *Elephant = null, // Hmm... tail needs something...
+    tail: *Elephant = null, //うーん...尻尾に何か必要だな...。
     visited: bool = false,
 };
 
@@ -30,7 +30,7 @@ pub fn main() void {
     var elephantB = Elephant{ .letter = 'B' };
     var elephantC = Elephant{ .letter = 'C' };
 
-    // Link the elephants so that each tail "points" to the next.
+    // 象の尻尾が次の象を "指す "ようにつなげます。
     elephantA.tail = &elephantB;
     elephantB.tail = &elephantC;
 
@@ -39,8 +39,8 @@ pub fn main() void {
     std.debug.print("\n", .{});
 }
 
-// This function visits all elephants once, starting with the
-// first elephant and following the tails to the next elephant.
+// この関数は、すべての象を一度だけ訪れ、最初の象から始めて、
+// 次の象まで尾をたどります。
 fn visitElephants(first_elephant: *Elephant) void {
     var e = first_elephant;
 
@@ -48,9 +48,9 @@ fn visitElephants(first_elephant: *Elephant) void {
         std.debug.print("Elephant {u}. ", .{e.letter});
         e.visited = true;
 
-        // We should stop once we encounter a tail that
-        // does NOT point to another element. What can
-        // we put here to make that happen?
+        // 他の要素を指していない尾部に遭遇した時点で
+        // 停止する必要があります。
+        // それを実現するために、ここに何を書けばいいのでしょうか？
         if (e.tail == null) ???;
 
         e = e.tail.?;

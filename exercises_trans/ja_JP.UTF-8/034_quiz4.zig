@@ -1,7 +1,7 @@
 //
-// Quiz time. See if you can make this program work!
+// クイズの時間です。このプログラムを動かせるかどうか見てみましょう
 //
-// Solve this any way you like, just be sure the output is:
+// 好きなように解いて、出力があることを確認してください。
 //
 //     my_num=42
 //
@@ -17,7 +17,7 @@ pub fn main() void {
     try stdout.print("my_num={}\n", .{my_num});
 }
 
-// This function is obviously weird and non-functional. But you will not be changing it for this quiz.
+// この機能は明らかに変で、機能していません。しかし、このクイズでは変更することはないでしょう。
 fn getNumber() NumError!u32 {
     if (false) return NumError.IllegalNumber;
     return 42;

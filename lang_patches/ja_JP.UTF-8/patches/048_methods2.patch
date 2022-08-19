@@ -1,0 +1,64 @@
+2,3c2,3
+< // Now that we've seen how methods work, let's see if we can help
+< // our elephants out a bit more with some Elephant methods.
+---
+> // メソッドがどのように機能するかを見てきましたので、いくつかの Elephantのメソッドで
+> // 私たちの象をもう少し助けられるか見てみましょう。
+12c12
+<     // New Elephant methods!
+---
+>     // 新しいエレファントメソッドの登場
+14c14
+<         return self.tail.?; // Remember, this means "orelse unreachable"
+---
+>         return self.tail.?; //  "orelse unreachable" を意味することを忘れないでください。
+26c26
+<         // Prints elephant letter and [v]isited
+---
+>         // 象を表す文字と[v]isitedを出力します。
+37c37
+<     // This links the elephants so that each tail "points" to the next.
+---
+>     // これは、それぞれの尾が次の尾を "指す "ように、象たちを繋ぐものです。
+46,47c46,47
+< // This function visits all elephants once, starting with the
+< // first elephant and following the tails to the next elephant.
+---
+> // この関数は、すべての象を一度だけ訪れ、最初の象から始めて、次の象まで尾をたどります。
+> // 最初の象から始めて、次の象まで尾をたどる。
+55c55
+<         // This gets the next elephant or stops.
+---
+>         // 次の象を取得するか停止する
+57c57
+<             e = e.???; // Which method do we want here?
+---
+>             e = e.???; // ここでは、どのメソッドを使います？
+64,66c64,66
+< // Zig's enums can also have methods! This comment originally asked
+< // if anyone could find instances of enum methods in the wild. The
+< // first five pull requests were accepted and here they are:
+---
+> // Zigの列挙型はメソッドを持つこともできる! このコメントは、もともと
+> // enum メソッドのインスタンスを見つけることができるかどうか。その結果
+> // 最初の 5 つのプルリクエストが受け入れられましたので、ここに紹介します。
+68c68
+< // 1) drforester - I found one in the Zig source:
+---
+> // 1) drforester - Zig のソースに一つありました。
+71c71
+< // 2) bbuccianti - I found one!
+---
+> // 2) bbuccianti - 1つ見つけました!
+74c74
+< // 3) GoldsteinE - Found many, here's one
+---
+> // 3) GoldsteinE - たくさん見つかりました。
+77c77
+< // 4) SpencerCDixon - Love this language so far :-)
+---
+> // 4) SpencerCDixon - この言語が今のところ大好きです :-)
+80c80
+< // 5) tomkun - here's another enum method
+---
+> // 5) tomkun - こちらも enum メソッドです。
