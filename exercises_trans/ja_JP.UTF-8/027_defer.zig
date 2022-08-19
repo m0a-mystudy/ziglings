@@ -1,25 +1,25 @@
 //
-// You can assign some code to run _after_ a block of code exits by
-// deferring it with a "defer" statement:
+// あるコードブロックが終了した後に実行されるコードを割り当てるには、 
+// "defer "ステートメントを使用してそれを遅延させることができます。
 //
 //     {
 //         defer runLater();
 //         runNow();
 //     }
 //
-// In the example above, runLater() will run when the block ({...})
-// is finished. So the code above will run in the following order:
+// 上の例では、runLater() はブロック ({...}) が終了したときに実行されます。
+// つまり、上のコードは以下の順番で実行されることになります
 //
 //     runNow();
 //     runLater();
 //
-// This feature seems strange at first, but we'll see how it could be
-// useful in the next exercise.
+// この機能は最初は奇妙に思えますが、次の演習でそれがどのように役立つかを
+// 見てみましょう。
 const std = @import("std");
 
 pub fn main() void {
-    // Without changing anything else, please add a 'defer' statement
-    // to this code so that our program prints "One Two\n":
+    // 他に何も変更せずに、'defer' ステートメントをコードに追加して、
+    // プログラムが "One Two\n" を出力するようにしてください。
     std.debug.print("Two\n", .{});
     std.debug.print("One ", .{});
 }
