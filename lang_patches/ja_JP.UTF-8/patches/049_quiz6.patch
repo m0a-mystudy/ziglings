@@ -1,0 +1,52 @@
+2,6c2,6
+< //    "Trunks and tails
+< //     Are handy things"
+< 
+< //     from Holding Hands
+< //       by Lenore M. Link
+---
+> // "鼻としっぽは
+> // 便利なものだ
+> //
+> // 手をつないで』より
+> // レノア・M・リンク作
+8c8
+< // Now that we have tails all figured out, can you implement trunks?
+---
+> // 尾っぽは全部わかったから、鼻を実装してくれない？
+27c27
+<     // Your Elephant trunk methods go here!
+---
+>     // あなたのエレファントの鼻(trunk)のメソッドはこちら
+39c39
+<         // Prints elephant letter and [v]isited
+---
+>         // 象の文字と[v]isitedを出力します。
+50c50
+<     // We link the elephants so that each tail "points" to the next.
+---
+>     // それぞれの尻尾が次の尻尾を「指す」ように、象をつないでいきます。
+54c54
+<     // And link the elephants so that each trunk "points" to the previous.
+---
+>     // そして、それぞれの鼻が前の鼻を「指す」ように、象をつなげます。
+63c63
+< // This function visits all elephants twice, tails to trunks.
+---
+> // この関数は、すべての象を尾から鼻へ2回ずつ訪れます。
+67c67
+<     // We follow the tails!
+---
+>     // 尾を追うんだ！
+72c72
+<         // This gets the next elephant or stops.
+---
+>         // これで次のゾウを得るか停止する
+80c80
+<     // We follow the trunks!
+---
+>     // 鼻を追うんだ！
+84c84
+<         // This gets the previous elephant or stops.
+---
+>         // これは、前の象を取得するか、停止。

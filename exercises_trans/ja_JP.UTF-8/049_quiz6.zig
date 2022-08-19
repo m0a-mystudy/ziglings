@@ -1,11 +1,11 @@
 //
-//    "Trunks and tails
-//     Are handy things"
-
-//     from Holding Hands
-//       by Lenore M. Link
+// "鼻としっぽは
+// 便利なものだ
 //
-// Now that we have tails all figured out, can you implement trunks?
+// 手をつないで』より
+// レノア・M・リンク作
+//
+// 尾っぽは全部わかったから、鼻を実装してくれない？
 //
 const std = @import("std");
 
@@ -24,7 +24,7 @@ const Elephant = struct {
         return (self.tail != null);
     }
 
-    // Your Elephant trunk methods go here!
+    // あなたのエレファントの鼻(trunk)のメソッドはこちら
     // ---------------------------------------------------
 
     ???
@@ -36,7 +36,7 @@ const Elephant = struct {
     }
 
     pub fn print(self: *Elephant) void {
-        // Prints elephant letter and [v]isited
+        // 象の文字と[v]isitedを出力します。
         var v: u8 = if (self.visited) 'v' else ' ';
         std.debug.print("{u}{u} ", .{ self.letter, v });
     }
@@ -47,11 +47,11 @@ pub fn main() void {
     var elephantB = Elephant{ .letter = 'B' };
     var elephantC = Elephant{ .letter = 'C' };
 
-    // We link the elephants so that each tail "points" to the next.
+    // それぞれの尻尾が次の尻尾を「指す」ように、象をつないでいきます。
     elephantA.tail = &elephantB;
     elephantB.tail = &elephantC;
 
-    // And link the elephants so that each trunk "points" to the previous.
+    // そして、それぞれの鼻が前の鼻を「指す」ように、象をつなげます。
     elephantB.trunk = &elephantA;
     elephantC.trunk = &elephantB;
 
@@ -60,16 +60,16 @@ pub fn main() void {
     std.debug.print("\n", .{});
 }
 
-// This function visits all elephants twice, tails to trunks.
+// この関数は、すべての象を尾から鼻へ2回ずつ訪れます。
 fn visitElephants(first_elephant: *Elephant) void {
     var e = first_elephant;
 
-    // We follow the tails!
+    // 尾を追うんだ！
     while (true) {
         e.print();
         e.visit();
 
-        // This gets the next elephant or stops.
+        // これで次のゾウを得るか停止する
         if (e.hasTail()) {
             e = e.getTail();
         } else {
@@ -77,11 +77,11 @@ fn visitElephants(first_elephant: *Elephant) void {
         }
     }
 
-    // We follow the trunks!
+    // 鼻を追うんだ！
     while (true) {
         e.print();
 
-        // This gets the previous elephant or stops.
+        // これは、前の象を取得するか、停止。
         if (e.hasTrunk()) {
             e = e.getTrunk();
         } else {

@@ -1,10 +1,10 @@
+
+// 助けて 邪悪なエイリアンが地球上に卵を隠し、
+// 孵化し始めたんだ
 //
-// Help! Evil alien creatures have hidden eggs all over the Earth
-// and they're starting to hatch!
+// 戦いに飛び込む前に、4つのことを知っておく必要があります。
 //
-// Before you jump into battle, you'll need to know four things:
-//
-// 1. You can attach functions to structs:
+// 1. 構造体には関数を付けることができる。
 //
 //     const Foo = struct{
 //         pub fn hello() void {
@@ -12,13 +12,13 @@
 //         }
 //     };
 //
-// 2. A function that is a member of a struct is a "method" and is
-//    called with the "dot syntax" like so:
+// 2. 構造体のメンバである関数は「メソッド」と呼ばれ、次のように「ドット構文」
+//    で呼び出します。
 //
 //     Foo.hello();
 //
-// 3. The NEAT feature of methods is the special parameter named
-//    "self" that takes an instance of that type of struct:
+// 3. メソッドの特長は、「self」という特別なパラメータを持ち、
+//    「self」はその型の構造体のインスタンスを取ることができます。
 //
 //     const Bar = struct{
 //         number: u32,
@@ -28,28 +28,28 @@
 //         }
 //     };
 //
-//    (Actually, you can name the first parameter anything, but
-//    please follow convention and use "self".)
-//
-// 4. Now when you call the method on an INSTANCE of that struct
-//    with the "dot syntax", the instance will be automatically
-//    passed as the "self" parameter:
+//    (実際には、最初のパラメータにどんな名前を付けても構いませんが
+//    慣習に従って "self "を使ってほしいです)
+// 
+// 4. この構造体のインスタンスに対して、このメソッドを「ドット構文」で呼び出すと
+//    そのインスタンスが自動的に「self」パラメータとして渡されます。
+//    
 //
 //     var my_bar = Bar{ .number = 2000 };
 //     my_bar.printMe(); // prints "2000"
 //
-// Okay, you're armed.
+// さて、あなたは武装しています。
 //
-// Now, please zap the alien structs until they're all gone or
-// Earth will be doomed!
+// さて、エイリアンの構造体がすべてなくなるまで、ザッピングしてください。
+// 地球は滅亡する!
 //
 const std = @import("std");
 
-// Look at this hideous Alien struct. Know your enemy!
+// この醜いエイリアンの構造を見てください。敵を知れ!
 const Alien = struct {
     health: u8,
 
-    // We hate this method:
+    // このメソッドは嫌いです。
     pub fn hatch(strength: u8) Alien {
         return Alien{
             .health = strength * 5,
@@ -57,18 +57,18 @@ const Alien = struct {
     }
 };
 
-// Your trusty weapon. Zap those aliens!
+// あなたの信頼できる武器。エイリアンをやっつけろ!
 const HeatRay = struct {
     damage: u8,
 
-    // We love this method:
+    // 私たちはこのメソッドが大好きです。
     pub fn zap(self: *HeatRay, alien: *Alien) void {
         alien.health -= if (self.damage >= alien.health) alien.health else self.damage;
     }
 };
 
 pub fn main() void {
-    // Look at all of these aliens of various strengths!
+    // 見てください、この様々な強さを持った宇宙人たちを!
     var aliens = [_]Alien{
         Alien.hatch(2),
         Alien.hatch(1),
@@ -79,19 +79,19 @@ pub fn main() void {
     };
 
     var aliens_alive = aliens.len;
-    var heat_ray = HeatRay{ .damage = 7 }; // We've been given a heat ray weapon.
+    var heat_ray = HeatRay{ .damage = 7 }; // 熱線兵器を渡された。
 
-    // We'll keep checking to see if we've killed all the aliens yet.
+    // まだエイリアンを全部倒していないかどうか、チェックし続けます。
     while (aliens_alive > 0) {
         aliens_alive = 0;
 
-        // Loop through every alien by reference (* makes a pointer capture value)
+        // すべてのエイリアンを参照でループする（※ポインタ・キャプチャの値を作る）
         for (aliens) |*alien| {
 
-            // *** Zap the alien with the heat ray here! ***
+            // *** ここで熱線でエイリアンをザッピング! ***
             ???.zap(???);
 
-            // If the alien's health is still above 0, it's still alive.
+            // エイリアンの体力がまだ0を超えていれば、生きていることになる。
             if (alien.health > 0) aliens_alive += 1;
         }
 
