@@ -1,0 +1,28 @@
+2,3c2,3
+< // A common case for errors is a situation where we're expecting to
+< // have a value OR something has gone wrong. Take this example:
+---
+> // よくあるエラーのケースは、次のような状況です。
+> // 値がある、または何かが間違っている場合です。この例を見てみましょう。
+7,8c7,8
+< // What happens if getText() can't find "foo.txt"?  How do we express
+< // this in Zig?
+---
+> // getText() が "foo.txt" を見つけられなかった場合はどうなるのでしょうか？ Zig ではどのように表現するのでしょうか？
+> // 
+10,11c10,11
+< // Zig lets us make what's called an "error union" which is a value
+< // which could either be a regular value OR an error from a set:
+---
+> // Zig では、「エラーユニオン」と呼ばれるものを作成することができます。
+> // 以下は、通常の値であるか、セットからのエラーであるかのどちらかを示します。
+15c15
+< // For now, let's just see if we can try making an error union!
+---
+> // とりあえず、エラーユニオンを作れるかどうか試してみましょう!
+24,25c24,25
+<     // Looks like my_number will need to either store a number OR
+<     // an error. Can you set the type correctly above?
+---
+>     // my_number は数字を格納する必要があるようです。
+>     // エラーになります。上で正しく型を設定できますか？

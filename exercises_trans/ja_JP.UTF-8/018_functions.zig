@@ -1,30 +1,30 @@
 //
-// Functions! We've already created lots of functions called 'main()'. Now let's
-// do something different:
+// 関数! すでに 'main()' と呼ばれる関数をたくさん作りました。では
+// 違うことをしてみましょう。
 //
 //     fn foo(n: u8) u8 {
 //         return n + 1;
 //     }
 //
-// The foo() function above takes a number 'n' and returns a number that is
-// larger by one.
+// 上の foo() 関数は、数値 'n' を受け取り、それを 1 つ大きくした数値を返します。
+// 
 //
-// Note the input parameter 'n' and return types are both u8.
+// 入力パラメータ 'n' と戻り値の型は共に u8 であることに注意。
 //
 const std = @import("std");
 
 pub fn main() void {
-    // The new function deepThought() should return the number 42. See below.
+    // 新しい関数 deepThought() は、42 という数字を返すはずです。以下を参照してください。
     const answer: u8 = deepThought();
 
     std.debug.print("Answer to the Ultimate Question: {}\n", .{answer});
 }
 
-// Please define the deepThought() function below.
+// 以下、deepThought()関数を定義してください。
 //
-// We're just missing a couple things. One thing we're NOT missing is the
-// keyword "pub", which is not needed here. Can you guess why?
+// いくつか足りないものがあります。不足していないものの1つは
+// キーワード "pub" はここでは必要ありません。なぜかわかりますか？
 //
 ??? deepThought() ??? {
-    return 42; // Number courtesy Douglas Adams
+    return 42; //  番号提供：ダグラス・アダムス
 }

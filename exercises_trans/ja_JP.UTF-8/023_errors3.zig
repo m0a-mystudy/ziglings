@@ -1,10 +1,10 @@
 //
-// One way to deal with error unions is to "catch" any error and
-// replace it with a default value.
+// エラーユニオンに対処する一つの方法として、あらゆるエラーを「キャッチ」し
+// デフォルト値に置き換えることです。
 //
 //     foo = canFail() catch 6;
 //
-// If canFail() fails, foo will equal 6.
+// canFail() が失敗した場合、foo は 6 になる。
 //
 const std = @import("std");
 
@@ -17,8 +17,8 @@ pub fn main() void {
     std.debug.print("a={}, b={}\n", .{ a, b });
 }
 
-// Please provide the return type from this function.
-// Hint: it'll be an error union.
+// この関数の戻り値の型を提示してください。
+// ヒント：エラーユニオンになります。
 fn addTwenty(n: u32) ??? {
     if (n < 5) {
         return MyNumberError.TooSmall;
