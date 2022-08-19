@@ -1,0 +1,28 @@
+2,3c2,3
+< // The "switch" statement lets you match the possible values of an
+< // expression and perform a different action for each.
+---
+> // "switch "ステートメントを使用すると、ある式の取り得る値をマッチングさせ、それぞれに対して異なるアクションを実行することができます。
+> // 式にマッチし、それぞれに対して異なるアクションを実行します。
+5c5
+< // This switch:
+---
+> // このスイッチ
+16c16
+< // Is equivalent to this if/else:
+---
+> // このif/elseと等価です。
+42c42
+<             // ... we don't need everything in between ...
+---
+>             // ...全部はいらない ...
+45,48c45,48
+<             // Switch statements must be "exhaustive" (there must be a
+<             // match for every possible value).  Please add an "else"
+<             // to this switch to print a question mark "?" when c is
+<             // not one of the existing matches.
+---
+>             // Switchステートメントは「網羅的」にする必要があります
+>             // (すべての可能な値にマッチする必要があります）。 このスイッチに "else" を追加してください。
+>             // c が既存のマッチのいずれでもない場合、クエスチョンマーク "?" を表示するよう、
+>             // このスイッチに追加してください。

@@ -1,0 +1,48 @@
+2,4c2,4
+< // Another common problem is a block of code that could exit in multiple
+< // places due to an error - but that needs to do something before it
+< // exits (typically to clean up after itself).
+---
+> // もう一つのよくある問題は、エラーによって複数の場所で終了する可能性があるコードブロックです。
+> // しかし、終了する前に何かをする必要があります。
+> // （通常は後始末をするため）。
+6c6
+< // An "errdefer" is a defer that only runs if the block exits with an error:
+---
+> // 「errdefer」は、ブロックがエラーで終了した場合にのみ実行されるdefferです。
+13,14c13,14
+< // The cleanup() function is called ONLY if the "try" statement returns an
+< // error produced by canFail().
+---
+> // cleanup() 関数は、try 文が canFail() で生成されたエラーを返した場合のみ呼び出される。
+> // 
+23c23
+<     // We simply quit the entire program if we fail to get a number:
+---
+>     // 数字が取れなければ、プログラム全体を終了するだけです。
+33,34c33,34
+<     // Please make the "failed" message print ONLY if the makeNumber()
+<     // function exits with an error:
+---
+>     // makeNumber()がエラーで終了した場合のみ、"failed "メッセージを表示するようにしてください。
+>     // 
+37c37
+<     var num = try getNumber(); // <-- This could fail!
+---
+>     var num = try getNumber(); // <-- これは失敗するかも！？
+39c39
+<     num = try increaseNumber(num); // <-- This could ALSO fail!
+---
+>     num = try increaseNumber(num); // <-- これは絶対に失敗します。
+47c47
+<     // I _could_ fail...but I don't!
+---
+>     // 失敗する可能性がある...でも、失敗しない!
+52c52
+<     // I fail after the first time you run me!
+---
+>     // 初めて走らされた後、失敗した！？
+55c55
+<     // Sneaky, weird global stuff.
+---
+>     // こっそりと、グローバルな変数をいじっている

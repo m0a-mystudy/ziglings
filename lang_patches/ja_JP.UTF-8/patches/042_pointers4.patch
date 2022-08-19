@@ -1,0 +1,45 @@
+2,3c2,3
+< // Now let's use pointers to do something we haven't been
+< // able to do before: pass a value by reference to a function.
+---
+> // では、ポインターを使用して、これまでできなかったことを行ってみましょう。
+> // 関数に値を参照渡しましょう。
+5,12c5,7
+< // Why would we wish to pass a pointer to an integer variable
+< // rather than the integer value itself? Because then we are
+< // allowed to *change* the value of the variable!
+< //
+< //     +-----------------------------------------------+
+< //     | Pass by reference when you want to change the |
+< //     | pointed-to value. Otherwise, pass the value.  |
+< //     +-----------------------------------------------+
+---
+> // なぜ整数型変数へのポインタを渡したいのでしょう？
+> // なぜ整数値そのものではなく、整数型変数へのポインタを渡したいのでしょうか？なぜなら、そうすれば
+> // 変数の値を *変更* することができるからです!
+13a9,13
+> // +-----------------------------------------------+
+> // | 指された値を変更したい場合は、参照渡しとする。        |
+> // | それ以外の場合は、値を渡す。                       |
+> // +-----------------------------------------------+
+> 
+20c20
+<     // Let's pass a reference to num to our function and print it:
+---
+>     // numの参照を関数に渡し、それを表示してみましょう。
+24,25c24,25
+<     // Now something interesting. Let's pass a reference to a
+<     // specific array value:
+---
+>     // さて、面白いことがあります。特定の配列の値への
+>     // 参照を渡してみましょう。
+28c28
+<     // And print the array:
+---
+>     // そして、その配列を出力する。
+37,38c37,38
+< // This function should take a reference to a u8 value and set it
+< // to 5.
+---
+> // この関数は、u8 値への参照を取り、それを 5 に設定する必要があります。
+> // 

@@ -1,0 +1,40 @@
+2c2
+< // Being able to group values together lets us turn this:
+---
+> // 値をグループ化することができるので、これを変えてみましょう。
+11c11
+< // into this:
+---
+> // 上記は以下にできます。
+16,17c16,17
+< // The Point above is an example of a "struct" (short for "structure").
+< // Here's how that struct type could have been defined:
+---
+> // 上のPointは「struct」（「構造体」の略）の一例です。
+> // そのstruct型の定義方法は以下の通りです。
+21c21
+< // Let's store something fun with a struct: a roleplaying character!
+---
+> // 構造体に、ロールプレイングキャラクターを格納しましょう。
+25c25
+< // We'll use an enum to specify the character class.
+---
+> //キャラクタクラスを指定するためにenumを使用することにします。
+33,34c33,34
+< // Please add a new property to this struct called "health" and make
+< // it a u8 integer type.
+---
+> // この構造体に "health "という新しいプロパティを追加し、
+> // u8整数型にしてください。
+42c42
+<     // Please initialize Glorp with 100 health.
+---
+>     // Glorpの体力を100に初期化してください。
+49c49
+<     // Glorp gains some gold.
+---
+>     // Glorpがゴールドを獲得。
+52c52
+<     // Ouch! Glorp takes a punch!
+---
+>     // 痛っ! Glorpがパンチを食らった!

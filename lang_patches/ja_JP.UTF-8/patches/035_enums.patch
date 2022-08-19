@@ -1,0 +1,36 @@
+2,8c2,8
+< // Remember that little mathematical virtual machine we made using the
+< // "unreachable" statement?  Well, there were two problems with the
+< // way we were using op codes:
+< //
+< //   1. Having to remember op codes by number is no good.
+< //   2. We had to use "unreachable" because Zig had no way of knowing
+< //      how many valid op codes there were.
+---
+> // "unreachable "ステートメントを使って作った小さな数学的バーチャルマシンを覚えていますか？
+> // その時、オペコードの使い方には2つの問題がありました。
+> // 
+> //
+> //   1. オペコードを番号で覚えるのは良くない。
+> //   2. Zigは有効なopコードの数を知る術がないので、unreachableを使わざるを得なかった。
+> // 
+10,11c10,11
+< // An "enum" is a Zig construct that lets you give names to numeric
+< // values and store them in a set. They look a lot like error sets:
+---
+> // 「enum」はZigの構成要素の一つで、数値に名前を付けてセットで保存することができる、
+> //  Zig の構成要素です。これはエラーセットとよく似ています。
+17,18c17,18
+< // Let's use an enum in place of the numbers we were using in the
+< // previous version!
+---
+> // 前バージョンで使っていた数値の代わりに enum を使ってみましょう!
+> // 
+22c22
+< // Please complete the enum!
+---
+> // enumを完成させてください!
+48c48
+<             // No "else" needed! Why is that?
+---
+>             // "else"は必要ない! なぜなんでしょう？

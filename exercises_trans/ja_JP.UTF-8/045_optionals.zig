@@ -1,50 +1,49 @@
 //
-// Sometimes you know that a variable might hold a value or
-// it might not. Zig has a neat way of expressing this idea
-// called Optionals. An optional type just has a '?' like this:
+// ある変数が値を保持しているかもしれないし、そうでないかもしれないことを知りたい場合があります。
+// Zigはこの考えをうまく表現しています。オプショナル型と呼んでいます。
+// オプショナル型は、以下のように「?」をつけます
 //
 //     var foo: ?u32 = 10;
 //
-// Now foo can store a u32 integer OR null (a value storing
-// the cosmic horror of a value NOT EXISTING!)
+// これで foo は u32 整数または null(存在しない値を格納する値) を格納することができます。
+// 
 //
 //     foo = null;
 //
 //     if (foo == null) beginScreaming();
 //
-// Before we can use the optional value as the non-null type
-// (a u32 integer in this case), we need to guarantee that it
-// isn't null. One way to do this is to THREATEN IT with the
-// "orelse" statement.
+// オプションの値を NULL でない型（この場合は u32型の整数）として使用する前に、
+// それが NULL でないことを保証する必要があります。
+// これを行う一つの方法は、"orelse "ステートメントを使い
+// それを試みることです。
 //
-//     var bar = foo orelse 2;
+// var bar = foo orelse 2;
 //
-// Here, bar will either equal the u32 integer value stored in
-// foo, or it will equal 2 if foo was null.
+// ここで、bar は foo に格納されている u32 整数値と等しくなります。
+// foo に格納されている u32 整数値と等しいか、foo が NULL の場合は 2 となります。
 //
 const std = @import("std");
 
 pub fn main() void {
     const result = deepThought();
 
-    // Please threaten the result so that answer is either the
-    // integer value from deepThought() OR the number 42:
+    // 結果がdeepThought()の整数値か42のどちらかになるように、
+    // resultを変えてください。
     var answer: u8 = result;
 
     std.debug.print("The Ultimate Answer: {}.\n", .{answer});
 }
 
 fn deepThought() ?u8 {
-    // It seems Deep Thought's output has declined in quality.
-    // But we'll leave this as-is. Sorry Deep Thought.
+    // Deep Thoughtのアウトプットの質が低下しているようです。
+    // でも、このままにしておきます。ごめんね Deep Thought。
     return null;
 }
-// Blast from the past:
-//
-// Optionals are a lot like error union types which can either
-// hold a value or an error. Likewise, the orelse statement is
-// like the catch statement used to "unwrap" a value or supply
-// a default value:
+// 過去からのブラスト
+
+// オプショナルは　error union typeによく似ていて、値かエラーを保持することができます。
+// 同様に、orelse文は、値を「アンラップ」したり、デフォルト値を提供するために使用される
+// catch文のようなものです。
 //
 //    var maybe_bad: Error!u32 = Error.Evil;
 //    var number: u32 = maybe_bad catch 0;

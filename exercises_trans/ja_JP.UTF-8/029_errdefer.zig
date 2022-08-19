@@ -1,17 +1,17 @@
 //
-// Another common problem is a block of code that could exit in multiple
-// places due to an error - but that needs to do something before it
-// exits (typically to clean up after itself).
+// もう一つのよくある問題は、エラーによって複数の場所で終了する可能性があるコードブロックです。
+// しかし、終了する前に何かをする必要があります。
+// （通常は後始末をするため）。
 //
-// An "errdefer" is a defer that only runs if the block exits with an error:
+// 「errdefer」は、ブロックがエラーで終了した場合にのみ実行されるdefferです。
 //
 //     {
 //         errdefer cleanup();
 //         try canFail();
 //     }
 //
-// The cleanup() function is called ONLY if the "try" statement returns an
-// error produced by canFail().
+// cleanup() 関数は、try 文が canFail() で生成されたエラーを返した場合のみ呼び出される。
+// 
 //
 const std = @import("std");
 
@@ -20,7 +20,7 @@ var counter: u32 = 0;
 const MyErr = error{ GetFail, IncFail };
 
 pub fn main() void {
-    // We simply quit the entire program if we fail to get a number:
+    // 数字が取れなければ、プログラム全体を終了するだけです。
     var a: u32 = makeNumber() catch return;
     var b: u32 = makeNumber() catch return;
 
@@ -30,13 +30,13 @@ pub fn main() void {
 fn makeNumber() MyErr!u32 {
     std.debug.print("Getting number...", .{});
 
-    // Please make the "failed" message print ONLY if the makeNumber()
-    // function exits with an error:
+    // makeNumber()がエラーで終了した場合のみ、"failed "メッセージを表示するようにしてください。
+    // 
     std.debug.print("failed!\n", .{});
 
-    var num = try getNumber(); // <-- This could fail!
+    var num = try getNumber(); // <-- これは失敗するかも！？
 
-    num = try increaseNumber(num); // <-- This could ALSO fail!
+    num = try increaseNumber(num); // <-- これは絶対に失敗します。
 
     std.debug.print("got {}. ", .{num});
 
@@ -44,15 +44,15 @@ fn makeNumber() MyErr!u32 {
 }
 
 fn getNumber() MyErr!u32 {
-    // I _could_ fail...but I don't!
+    // 失敗する可能性がある...でも、失敗しない!
     return 4;
 }
 
 fn increaseNumber(n: u32) MyErr!u32 {
-    // I fail after the first time you run me!
+    // 初めて走らされた後、失敗した！？
     if (counter > 0) return MyErr.IncFail;
 
-    // Sneaky, weird global stuff.
+    // こっそりと、グローバルな変数をいじっている
     counter += 1;
 
     return n + 1;

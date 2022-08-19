@@ -1,12 +1,12 @@
 //
-//    "Elephants walking
-//     Along the trails
+// 「象が歩く
+//   小道に沿って
 //
-//     Are holding hands
-//     By holding tails."
+//   手をつないでいる
+//   しっぽを掴んでいる」
 //
-//     from Holding Hands
-//       by Lenore M. Link
+// 「手をつないで」より
+//     レノア・M・リンク作
 //
 const std = @import("std");
 
@@ -18,13 +18,13 @@ const Elephant = struct {
 
 pub fn main() void {
     var elephantA = Elephant{ .letter = 'A' };
-    // (Please add Elephant B here!)
+    // (ここにエレファントBを追加してください！）
     var elephantC = Elephant{ .letter = 'C' };
 
-    // Link the elephants so that each tail "points" to the next elephant.
-    // They make a circle: A->B->C->A...
+    // それぞれの尻尾が次の象を「指す」ように象をつなげる。
+    // 円を作ように: A->B->C->A...
     elephantA.tail = &elephantB;
-    // (Please link Elephant B's tail to Elephant C here!)
+    // （ここで象Bの尻尾と象Cをリンクさせてください！）
     elephantC.tail = &elephantA;
 
     visitElephants(&elephantA);
@@ -32,10 +32,10 @@ pub fn main() void {
     std.debug.print("\n", .{});
 }
 
-// This function visits all elephants once, starting with the
-// first elephant and following the tails to the next elephant.
-// If we did not "mark" the elephants as visited (by setting
-// visited=true), then this would loop infinitely!
+// この関数は、すべての象を一度だけ訪問し、最初の象から始めて
+// 次の象まで尾をたどります。
+// もし、（visited=trueを設定して）象を訪問したように「マーク」しなければ、
+// これは無限にループすることになります。
 fn visitElephants(first_elephant: *Elephant) void {
     var e = first_elephant;
 
