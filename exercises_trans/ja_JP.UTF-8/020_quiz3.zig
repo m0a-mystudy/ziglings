@@ -1,9 +1,9 @@
 //
-// Let's see if we can make use of some of things we've learned so far.
-// We'll create two functions: one that contains a "for" loop and one
-// that contains a "while" loop.
+// これまでに学んだことを活かせるかどうか見てみましょう。
+// 1つは "for "ループを含む関数、もう1つは "while "ループを含む関数を作成します。
+// while "ループを含む関数です。
 //
-// Both of these are simply labeled "loop" below.
+// 両方とも、以下では単に「loop」と表記しています。
 //
 const std = @import("std");
 
@@ -14,12 +14,12 @@ pub fn main() void {
     std.debug.print("\n", .{});
 }
 
-// You won't see this every day: a function that takes an array with
-// exactly four u16 numbers. This is not how you would normally pass
-// an array to a function. We'll learn about slices and pointers in
-// a little while. For now, we're using what we know.
+// こんなの滅多にないでしょう: 
+// ちょうど 4 つの u16 の数値からなる配列を受け取る関数です。これは通常、関数に配列を渡す方法ではありません。
+// 配列を関数に渡す通常の方法とは異なります。スライスとポインタについては、
+// もう少し後で勉強しましょう。今のところ、私たちが知っていることを使っています。
 //
-// This function prints, but does not return anything.
+// この関数は表示されますが、何も返しません。
 //
 fn printPowersOfTwo(numbers: [4]u16) ??? {
     loop (numbers) |n| {
@@ -27,9 +27,9 @@ fn printPowersOfTwo(numbers: [4]u16) ??? {
     }
 }
 
-// This function bears a striking resemblance to twoToThe() in the last
-// exercise. But don't be fooled! This one does the math without the aid
-// of the standard library!
+// この関数は、前回の演習の twoToThe() に酷似しています。
+// しかし、騙されないでください! この関数は標準ライブラリの助けを借りずに
+// 計算を行います。
 //
 fn twoToThe(number: u16) ??? {
     var n: u16 = 0;
