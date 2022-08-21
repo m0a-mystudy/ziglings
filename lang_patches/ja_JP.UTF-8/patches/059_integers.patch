@@ -1,0 +1,33 @@
+2,3c2,3
+< // Zig lets you express integer literals in several convenient
+< // formats. These are all the same value:
+---
+> // Zig では、整数リテラルをいくつかの便利な形式で表現することができます。
+> // フォーマットで表現することができます。これらはすべて同じ値です。
+5,9c5,9
+< //     const a1: u8 = 65;        // decimal
+< //     const a2: u8 = 0x41;      // hexadecimal
+< //     const a3: u8 = 0o101;     // octal
+< //     const a4: u8 = 0b1000001; // binary
+< //     const a5: u8 = 'A';       // UTF-8 code point literal
+---
+> //     const a1: u8 = 65;           // 10進数
+> //     const a2: u8 = 0x41;         // 16 進法
+> //     const a3: u8 = 0o101;        // 8進数
+> //     const a4: u8 = 0b1000001;    // 2 進法
+> //     const a5: u8 = 'A';          // UTF-8 コードポイントリテラル
+11c11
+< // You can also place underscores in numbers to aid readability:
+---
+> // 数字の中にアンダースコアを入れて、読みやすくすることもできます。
+13,14c13,14
+< //     const t1: u32 = 14_689_520 // Ford Model T sales 1909-1927
+< //     const t2: u32 = 0xE0_24_F0 // same, in hex pairs
+---
+> //     const t1: u32 = 14_689_520 // フォードモデル T の 1909-1927 年の販売台数。
+> //     const t2: u32 = 0xE0_24_F0 // 同じく、16進数で表記します。
+16c16,17
+< // Please fix the message:
+---
+> // メッセージの修正をお願いします。
+> 
