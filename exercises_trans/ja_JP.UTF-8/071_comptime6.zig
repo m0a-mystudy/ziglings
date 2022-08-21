@@ -1,27 +1,27 @@
 //
-// There have been several instances where it would have been
-// nice to use loops in our programs, but we couldn't because the
-// things we were trying to do could only be done at compile
-// time. We ended up having to do those things MANUALLY, like
-// NORMAL people. Bah! We are PROGRAMMERS! The computer should be
-// doing this work.
+// プログラム中にループを使えたらいいのですが、
+// コンパイル時にしかできないことがあるため、ループを使えないことが何度かありました。
+// 結局、そのようなことは手動で行わなければなりませんでした。
+// 普通の人ならね。バーン！私たちはプログラマーなんだ! コンピュータが
+// この仕事をするのだ
 //
-// An 'inline for' is performed at compile time, allowing you to
-// programatically loop through a series of items in situations
-// like those mentioned above where a regular runtime 'for' loop
-// wouldn't be allowed:
+//
+// インライン for はコンパイル時に実行され、通常の実行時の 
+// for ループが許されない上記のような状況下で、
+// 一連の項目をプログラム的にループすることができます。
+//
 //
 //     inline for (.{ u8, u16, u32, u64 }) |T| {
 //         print("{} ", .{@typeInfo(T).Int.bits});
 //     }
 //
-// In the above example, we're looping over a list of types,
-// which are available only at compile time.
+// 上の例では、型のリストをループしています。
+// これはコンパイル時にのみ利用可能です。
 //
 const print = @import("std").debug.print;
 
-// Remember Narcissus from exercise 065 where we used builtins
-// for reflection? He's back and loving it.
+// 練習問題 065 で、リフレクションのためにビルトインを使用した Narcissus を覚えていますか？彼は復活して、
+// それを気に入っています。
 const Narcissus = struct {
     me: *Narcissus = undefined,
     myself: *Narcissus = undefined,
@@ -31,12 +31,12 @@ const Narcissus = struct {
 pub fn main() void {
     print("Narcissus has room in his heart for:", .{});
 
-    // Last time we examined the Narcissus struct, we had to
-    // manually access each of the three fields. Our 'if'
-    // statement was repeated three times almost verbatim. Yuck!
+    // 前回、Narcissus 構造体を調べたとき、私たちは 3 つのフィールドに
+    // それぞれ手動でアクセスしなければなりませんでした。私たちの 'if' ステートメントは、ほとんどそのままの形で 
+    // 3 回繰り返されました。うっそー
     //
-    // Please use an 'inline for' to implement the block below
-    // for each field in the slice 'fields'!
+    // スライス 'fields' の各フィールドに対して以下のブロックを実装するために
+    //  'inline for' を使ってください。
 
     const fields = @typeInfo(Narcissus).Struct.fields;
 
@@ -46,9 +46,9 @@ pub fn main() void {
         }
     }
 
-    // Once you've got that, go back and take a look at exercise
-    // 065 and compare what you've written to the abomination we
-    // had there!
+    // これができたら、エクササイズに戻って見てください。
+    // 065 に戻って、あなたが書いたものを、私たちが書いた醜態と
+    // 比較してみてください。
 
     print(".\n", .{});
 }
