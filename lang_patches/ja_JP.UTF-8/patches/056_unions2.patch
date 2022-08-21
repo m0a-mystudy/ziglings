@@ -1,0 +1,40 @@
+2,3c2,3
+< // It is really quite inconvenient having to manually keep track
+< // of the active field in our union, isn't it?
+---
+> // ユニオンのアクティブフィールドを手動で追跡しなければならないのは、
+> // 実に不便ですね？
+5,7c5,7
+< // Thankfully, Zig also has "tagged unions", which allow us to
+< // store an enum value within our union representing which field
+< // is active.
+---
+> //ありがたいことに、Zigには「タグ付きユニオン」があり、
+> // どのフィールドがアクティブかを表す列挙値をユニオンの中に
+> // 格納することができます。
+17,18c17,18
+< // Now we can use a switch directly on the union to act on the
+< // active field:
+---
+> // これで、ユニオンで直接スイッチを使用することができます。
+> // アクティブなフィールドに作用します。
+28,29c28,29
+< // Let's make our Insects use a tagged union (Doctor Zoraptera
+< // approves).
+---
+> // Insectsにタグ付きユニオンを使わせよう（Doctor Zorapteraの承認済み）
+> // 
+46c46
+<     // Could it really be as simple as just passing the union?
+---
+>     //本当にユニオンを渡すだけでいいのだろうか？
+60,63c60,63
+< // By the way, did unions remind you of optional values and errors?
+< // Optional values are basically "null unions" and errors use "error
+< // union types". Now we can add our own unions to the mix to handle
+< // whatever situations we might encounter:
+---
+> // ところで、unionはオプショナル値とエラーについて思い出させてくれたでしょうか？
+> // オプショナル値は基本的に「ヌルユニオン」で、エラーは
+> // 「エラーユニオン型」です。あとは独自のユニオンを追加して、
+> // 遭遇しそうな状況に対応することができます。

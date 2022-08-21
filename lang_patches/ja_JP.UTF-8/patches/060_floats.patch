@@ -1,0 +1,151 @@
+2,4c2,4
+< // Zig has support for IEEE-754 floating-point numbers in these
+< // specific sizes: f16, f32, f64, f128. Floating point literals
+< // may be writen in scientific notation:
+---
+> // Zig は IEEE-754 の浮動小数点数をサポートしており、
+> // そのサイズは f16, f32, f64, f128 です。
+> // 浮動小数点リテラルは科学的記法で書くことができます。
+11,12c11,12
+< // Hex floats can't use the letter 'e' because that's a hex
+< // digit, so we use a 'p' instead:
+---
+> // 16進数の浮動小数点は 'e' という文字が使えないので、
+> // 代わりに 'p' を使用します。
+14c14
+< //     const hex: f16 = 0x2A.F7p+3; // Wow, that's arcane!
+---
+> //     const hex: f16 = 0x2A.F7p+3; // わぁ、難解!
+16,27c16,27
+< // Be sure to use a float type that is large enough to store your
+< // value (both in terms of significant digits and scale).
+< // Rounding may or may not be okay, but numbers which are too
+< // large or too small become inf or -inf (positive or negative
+< // infinity)!
+< //
+< //     const pi: f16 = 3.1415926535;   // rounds to 3.140625
+< //     const av: f16 = 6.02214076e+23; // Avogadro's inf(inity)!
+< //
+< // A float literal has a decimal point. When performing math
+< // operations with numeric literals, ensure the types match. Zig
+< // does not perform unsafe type coercions behind your back:
+---
+> // 値を格納するのに十分な大きさの float 型を必ず使用してください 
+> // (有効桁数およびスケールの両方において)。
+> // 丸め誤魔化してもいいが、大きすぎたり小さすぎたりする数値は 
+> // inf や -inf (正または負の無限大) になってしまう!
+> // 
+> //
+> //     const pi: f16 = 3.1415926535;   // 3.140625 に丸める．
+> //     const av: f16 = 6.02214076e+23; // アボガドロ定数は 正の無限大!
+> //
+> // float リテラルには、小数点があります。
+> // 数値リテラルで数学演算を行う場合は、型が一致することを確認してください。
+> // Zigは安全でない型の強制を裏で行うことはありません。
+30c30
+< //     var foo: f16 = 13.5 * 5.0; // No problem, both are floats
+---
+> //     var foo: f16 = 13.5 * 5.0; // 問題なし、両方とも浮動小数点数です。
+32,33c32,33
+< // Please fix the two float problems with this program and
+< // display the result as a whole number.
+---
+> // このプログラムの2つの浮動小数点数の問題を修正し
+> // 結果を整数値で表示してください。
+38,39c38,39
+<     // The approximate weight of the Space Shuttle upon liftoff
+<     // (including boosters and fuel tank) was 2,200 tons.
+---
+>     // スペースシャトルの打ち上げ時のおおよその重量（ブースター、燃料タンクを含む）は
+>     // ブースターと燃料タンクを含む）2,200トンである。
+41,42c41,42
+<     // We'll convert this weight from tons to kilograms at a
+<     // conversion of 907.18kg to the ton.
+---
+>     // この重量をトンからキログラムに換算すると、1トン＝907.18kgとなる。
+>     // 1トン＝907.18kgで換算する。
+45,47c45,47
+<     // By default, float values are formatted in scientific
+<     // notation. Try experimenting with '{d}' and '{d:.3}' to see
+<     // how decimal formatting works.
+---
+>     // デフォルトでは、float 値は科学式でフォーマットされます。
+>     // 記法でフォーマットされます。'{d}' と '{d:.3}' を使って、
+>     // 小数点以下の書式がどうなるか試してみてください。
+51c51
+< // Floating further:
+---
+> // さらに浮動小数点。
+53,55c53,55
+< // As an example, Zig's f16 is a IEEE 754 "half-precision" binary
+< // floating-point format ("binary16"), which is stored in memory
+< // like so:
+---
+> // 例として、Zig の f16 は IEEE 754 の「半精度」2進浮動小数点フォーマット
+> //  ("binary16") であり、メモリにはこのように格納される。
+> // 
+59c59
+< //         |  exponent     significand
+---
+> //         |  指数部     有効数字
+61c61
+< //          sign
+---
+> //          符号
+63,76c63,76
+< // This example is the decimal number 3.140625, which happens to
+< // be the closest representation of Pi we can make with an f16
+< // due to the way IEEE-754 floating points store digits:
+< //
+< //   * Sign bit 0 makes the number positive.
+< //   * Exponent bits 10000 are a scale of 16.
+< //   * Significand bits 1001001000 are the decimal value 584.
+< //
+< // IEEE-754 saves space by modifying these values: the value
+< // 01111 is always subtracted from the exponent bits (in our
+< // case, 10000 - 01111 = 1, so our exponent is 2^1) and our
+< // significand digits become the decimal value _after_ an
+< // implicit 1 (so 1.1001001000 or 1.5703125 in decimal)! This
+< // gives us:
+---
+> // これは、IEEE-754 浮動小数点の桁の格納方法のため、
+> // f16 で作成できる円周率の表現に最も近いものです。
+> // 
+> //
+> //   * 符号ビット 0 は正の数を表します。
+> //   * 指数ビット 10000 は 16 のスケールです。
+> //   * 符号ビット 1001001000 は、10進数値 584 です。
+> //
+> // IEEE-754 では、これらの値を変更することでスペースを節約しています。
+> // 値 01111 は常に指数ビットから引かれ（この場合、10000 - 01111 = 1、
+> // したがって指数は 2^1）、有効数字は暗黙の 1 の後の 10 進値
+> // （つまり 10 進法では 1.1001001000 または 1.5703125） になります！
+> // このため、IEEE-753 では、これらの値を変更することでスペースを節約しています。
+> // これで、次のようになります。
+80,85c80,85
+< // Feel free to forget these implementation details immediately.
+< // The important thing to know is that floating point numbers are
+< // great at storing big and small values (f64 lets you work with
+< // numbers on the scale of the number of atoms in the universe),
+< // but digits may be rounded, leading to results which are less
+< // precise than integers.
+---
+> // これらの実装の詳細は、すぐに忘れていただいて結構です。
+> // 知っておくべき重要なことは、浮動小数点数は
+> // 大きな値や小さな値を格納するのに適していますが
+> // （f64では宇宙の原子数規模の数を扱うことができます）、
+> // 桁が丸められることがあり、整数よりも精度が低い結果につながるということです。
+> // 
+87,88c87,88
+< // Fun fact: sometimes you'll see the significand labeled as a
+< // "mantissa" but Donald E. Knuth says not to do that.
+---
+> // 面白いことに、有効数字は「仮数」と表示されることがありますが、
+> // Donald E. Knuthはそうしないようにと言っています。
+90,91c90,92
+< // C compatibility fact: There is also a Zig floating point type
+< // specifically for working with C ABIs called c_longdouble.
+---
+> // C との互換性: c_longdouble という、C の ABI で使用するための 
+> // Zig 浮動小数点型も存在します。
+> 

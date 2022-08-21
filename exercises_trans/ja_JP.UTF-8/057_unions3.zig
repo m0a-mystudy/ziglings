@@ -1,8 +1,8 @@
 //
-// With tagged unions, it gets EVEN BETTER! If you don't have a
-// need for a separate enum, you can define an inferred enum with
-// your union all in one place. Just use the 'enum' keyword in
-// place of the tag type:
+//　タグ付き共用体を使用すると、さらに「良いことがあります」。
+// 別の列挙型を使用する必要がない場合、推論された列挙型を一度に定義することができます。
+// タグの型の代わりに 'enum' キーワードを使用するだけです。
+// 
 //
 //     const Foo = union(enum) {
 //         small: u8,
@@ -10,8 +10,8 @@
 //         large: u64,
 //     };
 //
-// Let's convert Insect. Doctor Zoraptera has already deleted the
-// explicit InsectStat enum for you!
+// Insectを変換してみよう。Zoraptera 博士はすでに 
+// 明示的な InsectStat 列挙型を削除してくれました!
 //
 const std = @import("std");
 
@@ -39,16 +39,16 @@ fn printInsect(insect: Insect) void {
     }
 }
 
-// Inferred enums are neat, representing the tip of the iceberg
-// in the relationship between enums and unions. You can actually
-// coerce a union TO an enum (which gives you the active field
-// from the union as an enum). What's even wilder is that you can
-// coerce an enum to a union! But don't get too excited, that
-// only works when the union type is one of those weird zero-bit
-// types like void!
+// 推論されたenumは、enumとunionの関係における氷山の一角を表しているような、
+// すてきなものです。実際に、enumにユニオンを強制することができます
+// （ユニオンからenumとしてアクティブなフィールドを得ることができます）。
+// さらに不思議なことに、enumをunionに強制することができるのです！
+// しかし、あまり興奮しないでください。
+// これは、ユニオンの型がvoidのような奇妙なゼロビット型の1つである場合にのみ機能します
+// 
 //
-// Tagged unions, as with most ideas in computer science, have a
-// long history going back to the 1960s. However, they're only
-// recently becoming mainstream, particularly in system-level
-// programming languages. You might have also seen them called
-// "variants", "sum types", or even "enums"!
+// タグ付きユニオンは、コンピュータサイエンスにおける多くのアイデアと同様に、
+// 1960年代にまで遡る長い歴史を持っています。しかし、
+// 特にシステムレベルのプログラミング言語では、最近になってようやく主流になりつつあります。
+// また、「バリアント」、「和集合型」、「列挙型」とも呼ばれているのを
+// 見たことがあるかもしれません!
