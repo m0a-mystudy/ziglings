@@ -1,13 +1,13 @@
 //
-// Loop bodies are blocks, which are also expressions. We've seen
-// how they can be used to evaluate and return values. To further
-// expand on this concept, it turns out we can also give names to
-// blocks by applying a 'label':
+// ループ本体はブロックであり、これも式である。
+// これまで、ブロックがどのように値を評価したり返したりするのかを見てきました。
+// この概念をさらに発展させるために、「ラベル」を適用して
+// ブロックに名前を付けることもできることがわかりました。
 //
 //     my_label: { ... }
 //
-// Once you give a block a label, you can use 'break' to exit
-// from that block.
+// ブロックにラベルを与えると、
+// 'break' を使ってそのブロックから抜けることができます。
 //
 //     outer_block: {           // outer block
 //         while (true) {       // inner block
@@ -16,21 +16,21 @@
 //         unreachable;
 //     }
 //
-// As we've just learned, you can return a value using a break
-// statement. Does that mean you can return a value from any
-// labeled block? Yes it does!
+// 先ほど学んだように、break文を使って値を返すことができます。
+// ということは、どのラベル付きブロックからも値を返すことができるのでしょうか？
+// はい、そうです。
 //
 //     const foo = make_five: {
 //         const five = 1 + 1 + 1 + 1 + 1;
 //         break :make_five five;
 //     };
 //
-// Labels can also be used with loops. Being able to break out of
-// nested loops at a specific level is one of those things that
-// you won't use every day, but when the time comes, it's
-// incredibly convenient. Being able to return a value from an
-// inner loop is sometimes so handy, it almost feels like cheating
-// (and can help you avoid creating a lot of temporary variables).
+// ラベルはループでも使用できます。ネストされたループから特定のレベルで抜け出すことができるのは、
+// 毎日使うものではありませんが、いざというときには非常に便利です。
+// ループの内側から値を返すことができるのは、時にはとても便利で、
+// まるで不正行為をしているような気分になります。
+//  (また、一時変数を大量に作成するのを避けるのにも役立ちます）。
+//
 //
 //     const bar: u8 = two_loop: while (true) {
 //         while (true) {
@@ -38,13 +38,13 @@
 //         }
 //     } else 0;
 //
-// In the above example, the break exits from the outer loop
-// labeled "two_loop" and returns the value 2. The else clause is
-// attached to the outer two_loop and would be evaluated if the
-// loop somehow ended without the break having been called.
+// 上記の例では、break は "two_loop" と書かれた外側のループから抜け出し、
+// 値 2 を返します。else 節は外側の two_loop に付属しており、
+// break が呼ばれずにループが何らかの形で終了した場合に評価される。
 //
-// Finally, you can also use block labels with the 'continue'
-// statement:
+//
+// 最後に、ブロックラベルを 'continue' と一緒に使用することもできます。
+// 
 //
 //     my_while: while (true) {
 //         continue :my_while;
@@ -52,8 +52,8 @@
 //
 const print = @import("std").debug.print;
 
-// As mentioned before, we'll soon understand why these two
-// numbers don't need explicit types. Hang in there!
+// 前述のように、なぜこの2つの数値に明示的な型が必要ないのか、
+// すぐに理解できると思います。がんばれー
 const ingredients = 4;
 const foods = 4;
 
@@ -90,51 +90,51 @@ const menu: [foods]Food = [_]Food{
 };
 
 pub fn main() void {
-    // Welcome to Cafeteria USA! Choose your favorite ingredients
-    // and we'll produce a delicious meal.
+    // カフェテリアUSAへようこそ! 好きな食材を選んで
+    // 美味しい食事を作りましょう。
     //
-    // Cafeteria Customer Note: Not all ingredient combinations
-    // make a meal. The default meal is macaroni and cheese.
+    // Cafeteria Customer Note: 全ての食材の組み合わせで食事が出来るわけではありません。
+    // お料理をお作りします。デフォルトの食事はマカロニ・アンド・チーズです。
     //
-    // Software Developer Note: Hard-coding the ingredient
-    // numbers (based on array position) will be fine for our
-    // tiny example, but it would be downright criminal in a real
-    // application!
+    // ソフトウェア開発者向けメモ: 食材の数をハードコーディングする。
+    // ハードコーディングされた食材番号 (配列の位置に基づく) は、この小さな例では問題ありませんが
+    // しかし、実際のアプリケーションでは、これは非常に危険な行為です。
+    // 実際のアプリケーションでは、まさに犯罪です!
     const wanted_ingredients = [_]u8{ 0, 3 }; // Chili, Cheese
 
-    // Look at each Food on the menu...
+    // メニューの各食品を見る...
     const meal = food_loop: for (menu) |food| {
 
-        // Now look at each required ingredient for the Food...
+        // 次に、その食品に必要な食材を見る...
         for (food.requires) |required, required_ingredient| {
 
-            // This ingredient isn't required, so skip it.
+            // この食材は必須ではありませんので、スキップしてください。
             if (!required) continue;
 
-            // See if the customer wanted this ingredient.
-            // (Remember that want_it will be the index number of
-            // the ingredient based on its position in the
-            // required ingredient list for each food.)
+            // 顧客がこの食材を希望したかどうかを確認する。
+            // (各食品の必須成分リストにおける位置に基づいて、
+            // want_it がその成分のインデックス番号になることを覚えておいてください) 
+            // の位置に基づく食材のインデックス番号であることを忘れないように)。
             const found = for (wanted_ingredients) |want_it| {
                 if (required_ingredient == want_it) break true;
             } else false;
 
-            // We did not find this required ingredient, so we
-            // can't make this Food. Continue the outer loop.
+            // この必要な食材が見つからなかったので、この食品は作れない。
+            // はこの食品を作ることができない。外側のループを続ける。
             if (!found) continue :food_loop;
         }
 
-        // If we get this far, the required ingredients were all
-        // wanted for this Food.
+        // ここまでくれば、必要な材料がすべて揃ったことになる。
+        // この食品に必要な材料はすべて揃っている。
         //
-        // Please return this Food from the loop.
+        // このFoodをループから戻してください。
         break;
     };
-    // ^ Oops! We forgot to return Mac & Cheese as the default
-    // Food when the requested ingredients aren't found.
+    // ^ おっと! 要求された材料が見つからない場合、
+    // デフォルトの食品としてMac & Cheeseを返すのを忘れていました。
 
     print("Enjoy your {s}!\n", .{meal.name});
 }
 
-// Challenge: You can also do away with the 'found' variable in
-// the inner loop. See if you can figure out how to do that!
+// チャレンジ: 内部ループの変数 'found' をなくすこともできます。
+// どうすればいいか、考えてみてください。
