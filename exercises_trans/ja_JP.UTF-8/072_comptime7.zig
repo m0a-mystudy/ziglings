@@ -1,8 +1,8 @@
 //
-// There is also an 'inline while'. Just like 'inline for', it
-// loops at compile time, allowing you do all sorts of
-// interesting things not possible at runtime. See if you can
-// figure out what this rather bonkers example prints:
+// 'inline while' もあります。inline for' と同じように、
+// コンパイル時にループさせることで、実行時には不可能な様々な面白いことを
+// 可能にします。
+// このちょっとおかしな例が何を出力しているか分かるかな。
 //
 //     const foo = [3]*const [5]u8{ "~{s}~", "<{s}>", "d{s}b" };
 //     comptime var i = 0;
@@ -11,55 +11,55 @@
 //         print(foo[i] ++ "\n", .{foo[i]});
 //     }
 //
-// You haven't taken off that wizard hat yet, have you?
+// まだ魔法使いの帽子は脱いでないんだね？
 //
 const print = @import("std").debug.print;
 
 pub fn main() void {
-    // Here is a string containing a series of arithmetic
-    // operations and single-digit decimal values. Let's call
-    // each operation and digit pair an "instruction".
+    // ここに一連の算術演算と 10 進 1 桁の値を含む文字列があります。
+    //  各演算と桁の組を「命令」と呼ぶことにしましょう。
+    // 
     const instructions = "+3 *5 -2 *2";
 
-    // Here is a u32 variable that will keep track of our current
-    // value in the program at runtime. It starts at 0, and we
-    // will get the final value by performing the sequence of
-    // instructions above.
+    // ここに u32 変数があり、プログラムの実行時に現在の値を記録します。
+    // 0から始まり、上記の一連の命令を実行することで最終的な値を取得します。
+    //
+    // 
     var value: u32 = 0;
 
-    // This "index" variable will only be used at compile time in
-    // our loop.
+    // この "index" 変数は、ループ内のコンパイル時にのみ使用されます。
+    //
     comptime var i = 0;
 
-    // Here we wish to loop over each "instruction" in the string
-    // at compile time.
+    // ここでは、コンパイル時に文字列の各「命令」に対してループをかけたい。
     //
-    // Please fix this to loop once per "instruction":
+    //
+    //  1つの "命令 "につき1回ループするように修正してください。
     ??? (i < instructions.len) : (???) {
 
-        // This gets the digit from the "instruction". Can you
-        // figure out why we subtract '0' from it?
+        // これは、「命令」から数字を取得します。あなたは
+        // なぜ'0'を引いているのかわかりますか？
         comptime var digit = instructions[i + 1] - '0';
 
-        // This 'switch' statement contains the actual work done
-        // at runtime. At first, this doesn't seem exciting...
+         // この'switch'ステートメントには、実行時に行われる実際の作業が含まれています。
+        //  最初、これはエキサイティングなことではありません...
         switch (instructions[i]) {
             '+' => value += digit,
             '-' => value -= digit,
             '*' => value *= digit,
             else => unreachable,
         }
-        // ...But it's quite a bit more exciting than it first appears.
-        // The 'inline while' no longer exists at runtime and neither
-        // does anything else not touched directly by runtime
-        // code. The 'instructions' string, for example, does not
-        // appear anywhere in the compiled program because it's
-        // not used by it!
+        // ...しかし、最初に見たときよりもかなりエキサイティングなことです。
+        // 'inline while' はもはや実行時には存在せず、
+        // 実行時コードに直接触れられないものも存在しない。
+        // 例えば 'instructions' という文字列は、
+        // コンパイルされたプログラムでは使われないので、どこにも現れません!
         //
-        // So in a very real sense, this loop actually converts
-        // the instructions contained in a string into runtime
-        // code at compile time. Guess we're compiler writers
-        // now. See? The wizard hat was justified after all.
+        //
+        // つまり、このループは実際のところ、文字列に含まれる命令を
+        // コンパイル時に実行時コードに変換しているのです。
+        // 私たちは今、コンパイラの作者なのです。
+        // ほらね？結局のところ、魔法使いの帽子は正当化されたのです。
     }
 
     print("{}\n", .{value});

@@ -1,89 +1,89 @@
 //
-// The Zig compiler provides "builtin" functions. You've already
-// gotten used to seeing an @import() at the top of every
-// Ziglings exercise.
+// Zigコンパイラは「ビルトイン」関数を提供します。
+// Ziglingsのエクササイズの先頭にある@import()はもう見慣れましたね。
 //
-// We've also seen @intCast() in "016_for2.zig", "058_quiz7.zig";
-// and @enumToInt() in "036_enums2.zig".
 //
-// Builtins are special because they are intrinsic to the Zig
-// language itself (as opposed to being provided in the standard
-// library). They are also special because they can provide
-// functionality that is only possible with help from the
-// compiler, such as type introspection (the ability to examine
-// type properties from within a program).
+// 016_for2.zig" や "058_quiz7.zig" では @intCast() も見かけました。
+// "036_enums2.zig "では@enumToInt()を見ています。
 //
-// Zig currently contains 101 builtin functions. We're certainly
-// not going to cover them all, but we can look at some
-// interesting ones.
+// ビルトインは（標準ライブラリで提供されるのではなく）
+// Zig言語自体に内在するものなので、特別なものです。
+// また、型イントロスペクション（プログラムの中から型のプロパティを調べる機能）
+// のように、コンパイラの助けがなければ実現できない機能を提供できるのも
+// 特別な点です。
 //
-// Before we begin, know that many builtin functions have
-// parameters marked as "comptime". It's probably fairly clear
-// what we mean when we say that these parameters need to be
-// "known at compile time." But rest assured we'll be doing the
-// "comptime" subject real justice soon.
+//
+// Zig には現在 101 の組み込み関数があります。
+// そのすべてを網羅するつもりはありませんが、
+// 興味深いものをいくつか見てみましょう。
+//
+// 始める前に、多くの組み込み関数が "comptime"とマークされたパラメータを
+// 持っていることを知っておいてください。これらのパラメータが
+// 「コンパイル時に既知である」必要があると言ったとき、私たちが何を意味しているかは、
+// おそらくかなり明確でしょう。しかし、我々はすぐに "comptime "について
+// 本当の正義を行うので、安心してください。
 //
 const print = @import("std").debug.print;
 
 pub fn main() void {
-    // The first builtin, alphabetically, is:
+    //  最初の組み込みは、アルファベット順です。
     //
     //   @addWithOverflow(comptime T: type, a: T, b: T, result: *T) bool
-    //     * 'T' will be the type of the other parameters.
-    //     * 'a' and 'b' are numbers of the type T.
-    //     * 'result' is a pointer to space you're providing of type T.
-    //     * The return value is true if the addition resulted in a
-    //       value over or under the capacity of type T.
+    //     * 'T' は他のパラメータの型になります。
+    //     * 'a' と 'b' は T 型の数値である。
+    //     *  'result' は、提供する空間へのポインタであり、T型である。
+    //     * 返り値は、加算の結果、型Tの容量を超える値
+    //       または下回る値が得られた場合に真となる。
     //
-    // Let's try it with a tiny 4-bit integer size to make it clear:
+    //わかりやすくするために、小さな4ビット整数のサイズで試してみよう。
     const a: u4 = 0b1101;
     const b: u4 = 0b0101;
     var my_result: u4 = undefined;
     var overflowed: bool = undefined;
     overflowed = @addWithOverflow(u4, a, b, &my_result);
 
-    // Check out our fancy formatting! b:0>4 means, "print
-    // as a binary number, zero-pad right-aligned four digits."
-    // The print() below will produce: "1101 + 0101 = 0010 (true)".
+    // おしゃれなフォーマットを見てみましょう！ b:0>4 は、
+    // 「2進数で表示し、ゼロパッドで右寄せにした4桁を表示する」という意味です。
+    // 以下の print() は、次のように出力します。"1101 + 0101 = 0010 (true)"
     print("{b:0>4} + {b:0>4} = {b:0>4} ({})", .{ a, b, my_result, overflowed });
 
-    // Let's make sense of this answer. The value of 'b' in decimal is 5.
-    // Let's add 5 to 'a' but go one by one and see where it overflows:
+    // この答えに意味を持たせてみましょう。b'の10進数での値は5です。
+    // 'a'に5を足してみますが、1つずつ行ってどこでオーバーフローするか見てみましょう。
     //
     //   a  |  b   | result | overflowed?
     // ----------------------------------
     // 1101 + 0001 =  1110  | false
     // 1110 + 0001 =  1111  | false
-    // 1111 + 0001 =  0000  | true  (the real answer is 10000)
+    // 1111 + 0001 =  0000  | true  (本当の答えは10000です)
     // 0000 + 0001 =  0001  | false
     // 0001 + 0001 =  0010  | false
     //
-    // In the last two lines the value of 'a' is corrupted because there was
-    // an overflow in line 3, but the operations of lines 4 and 5 themselves
-    // do not overflow.
-    // There is a difference between
-    //  - a value, that overflowed at some point and is now corrupted
-    //  - a single operation that overflows and maybe causes subsequent errors
-    // In practise we usually notice the overflowed value first and have to work
-    // our way backwards to the operation that caused the overflow.
+    // 最後の2行では、3行目でオーバーフローがあったため'a'の値が壊れていますが、
+    // 4行目と5行目の演算そのものはオーバーフローしていません。
+    // 
+    // 以下のような違いがあります。
+    //  - ある時点でオーバーフローし、破損してしまった値
+    //  - オーバーフローした1つの演算が、その後のエラーを引き起こす可能性がある。
+    // 実際には、オーバーフローした値に最初に気づき、
+    // オーバーフローを引き起こした操作までさかのぼって考えなければならない。
     //
-    // If there was no overflow at all while adding 5 to a, what value would
-    // 'my_result' hold? Write the answer in into 'expected_result'.
+    // aに5を足しても全くオーバーフローしなかった場合、'my_result'はどのような値を持つか？
+    // その答えを 'expected_result' に書き込んでください。
     const expected_result: u8 = ???;
     print(". Without overflow: {b:0>8}. ", .{expected_result});
 
     print("Furthermore, ", .{});
 
-    // Here's a fun one:
+    //  ここに楽しいものがあります。
     //
     //   @bitReverse(comptime T: type, integer: T) T
-    //     * 'T' will be the type of the input and output.
-    //     * 'integer' is the value to reverse.
-    //     * The return value will be the same type with the
-    //       value's bits reversed!
+    //     * 'T' は入出力の型になります。
+    //     * 'integer'は反転させる値です。
+    //     * 返り値は、値のビットを反転した同じ型になる!
     //
-    // Now it's your turn. See if you can fix this attempt to use
-    // this builtin to reverse the bits of a u8 integer.
+    //
+    // 次はあなたの番です。この組み込み関数を使って 
+    // u8 整数のビットを反転させようとする試みを修正できるかどうか見てみましょう。
     const input: u8 = 0b11110000;
     const tupni: u8 = @bitReverse(input);
     print("{b:0>8} backwards is {b:0>8}.\n", .{ input, tupni });
