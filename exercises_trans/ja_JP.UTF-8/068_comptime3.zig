@@ -1,25 +1,25 @@
 //
-// You can also put 'comptime' before a function parameter to
-// enforce that the argument passed to the function must be known
-// at compile time. We've actually been using a function like
-// this the entire time, std.debug.print():
+// 関数の引数の前に 'comptime' を置くことで、
+// 関数に渡される引数がコンパイル時に既知でなければならないことを
+// 強制することもできる。
+// 実際には、ずっとこのような関数std.debug.print()を使っています。
 //
 //     fn print(comptime fmt: []const u8, args: anytype) void
 //
-// Notice that the format string parameter 'fmt' is marked as
-// 'comptime'.  One of the neat benefits of this is that the
-// format string can be checked for errors at compile time rather
-// than crashing at runtime.
+// 書式文字列パラメータ 'fmt' が 'comptime' とマークされていることに注意してください。
+// この利点の一つは、実行時にクラッシュするのではなく、コンパイル時にformat文字列のエラーを
+// チェックできることである。実行時にクラッシュするのではなく、
+// コンパイル時にエラーをチェックできることです。
 //
-// (The actual formatting is done by std.fmt.format() and it
-// contains a complete format string parser that runs entirely at
-// compile time!)
+// (実際のフォーマットは std.fmt.format() で行われ、
+// コンパイル時に実行される完全なフォーマット文字列パーサーを含んでいます! 
+// コンパイル時に実行されます！)
 //
 const print = @import("std").debug.print;
 
-// This struct is the model of a model boat. We can transform it
-// to any scale we would like: 1:2 is half-size, 1:32 is
-// thirty-two times smaller than the real thing, and so forth.
+// この構造体は模型のボートのモデルである。好きな縮尺に変形させることができる。
+// 1:2 は半分の大きさ、1:32 は実物の 32 倍の大きさ、といった具合に。
+// 
 const Schooner = struct {
     name: []const u8,
     scale: u32 = 1,
@@ -30,19 +30,19 @@ const Schooner = struct {
     fn scaleMe(self: *Schooner, comptime scale: u32) void {
         var my_scale = scale;
 
-        // We did something neat here: we've anticipated the
-        // possibility of accidentally attempting to create a
-        // scale of 1:0. Rather than having this result in a
-        // divide-by-zero error at runtime, we've turned this
-        // into a compile error.
+        // ここでは、誤って1:0のスケールを作成しようとする可能性を想定して、
+        // 巧妙な工夫をしています。
+        // 実行時にゼロ除算エラーになるのではなく、
+        // コンパイルエラーに変えています。
         //
-        // This is probably the correct solution most of the
-        // time. But our model boat model program is very casual
-        // and we just want it to "do what I mean" and keep
-        // working.
         //
-        // Please change this so that it sets a 0 scale to 1
-        // instead.
+        // これはおそらくほとんどの場合、正しい解決策です。
+        // しかし、私たちのモデルボートモデルプログラムは非常にカジュアルで、
+        // 私たちはただ「私が言いたいことをやって」動作し続けさせたいだけなのです。        
+        //
+        //
+        // 代わりに0スケールを1に設定するように変更してください。
+        // 
         if (my_scale == 0) @compileError("Scale 1:0 is not valid!");
 
         self.scale = my_scale;
@@ -66,9 +66,9 @@ pub fn main() void {
     var shark = Schooner{ .name = "Shark" };
     var minnow = Schooner{ .name = "Minnow" };
 
-    // Hey, we can't just pass this runtime variable as an
-    // argument to the scaleMe() method. What would let us do
-    // that?
+    // ねえ、この実行時変数を
+    // メソッドに渡すことはできない。どうすればいいんだ？
+    // 
     var scale: u32 = undefined;
 
     scale = 32; // 1:32 scale
@@ -81,28 +81,26 @@ pub fn main() void {
     shark.scaleMe(scale);
     shark.printMe();
 
-    scale -= 16; // 1:0 scale (oops, but DON'T FIX THIS!)
+    scale -= 16; // 1:0 scale (おっと、でもこれは修正しないでね!)
 
     whale.scaleMe(scale);
     whale.printMe();
 }
 //
-// Going deeper:
+// さらに深く
 //
-// What would happen if you DID attempt to build a model in the
-// scale of 1:0?
+// もし、1:0の縮尺で模型を作ろうとしたら、どうなるでしょうか？
 //
-//    A) You're already done!
-//    B) You would suffer a mental divide-by-zero error.
-//    C) You would construct a singularity and destroy the
-//       planet.
 //
-// And how about a model in the scale of 0:1?
+//    A) すでに完成しています。
+//    B) 精神的なゼロ除算エラーに見舞われる。
+//    C) 特異点を作り、地球を破壊する。
 //
-//    A) You're already done!
-//    B) You'd arrange nothing carefully into the form of the
-//       original nothing but infinitely larger.
-//    C) You would construct a singularity and destroy the
-//       planet.
 //
-// Answers can be found on the back of the Ziglings packaging.
+// 0:1の縮尺の模型はどうだろう？
+//
+//    A) すでに完成しています。
+//    B) 無を元の無の形に注意深く並べるが、無限に拡大する。
+//    C) 特異点を作り、惑星を破壊する。
+//
+// 答えはZiglingsのパッケージ裏面に記載されています。

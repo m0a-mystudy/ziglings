@@ -1,44 +1,44 @@
 //
-// Zig has builtins for mathematical operations such as...
+// Zigには、以下のような数学演算のためのビルトインがあります。
 //
 //      @sqrt        @sin          @cos
 //      @exp         @log          @floor
 //
-// ...and lots of type casting operations such as...
+// ...そして、以下のような多くの型キャスト操作があります。
 //
 //      @as          @intToError   @intToFloat
 //      @intToPtr    @ptrToInt     @enumToInt
 //
-// Spending part of a rainy day skimming through the complete
-// list of builtins in the official Zig documentation wouldn't be
-// a bad use of your time. There are some seriously cool features
-// in there. Check out @call, @compileLog, @embedFile, and @src!
+// 雨の日に、公式 Zig ドキュメントにあるビルトインの完全なリストにざっと
+// 目を通すのも悪くない時間の使い方でしょう。
+// そこにあるのは、とてもクールな機能です。
+// call、@compileLog、@embedFile、@srcをチェックしてみてください。
 //
 //                            ...
 //
-// For now, we're going to complete our examination of builtins
-// by exploring just THREE of Zig's MANY introspection abilities:
+// 今のところ、私たちはビルトインの調査を完了させるつもりです。
+// Zigの多くのイントロスペクション能力のうち、3つだけを調べます。
 //
-// 1. @This() type
+// 1. This() 型
 //
-// Returns the innermost struct, enum, or union that a function
-// call is inside.
+// 関数呼び出しの内部にある、最も内側の構造体、列挙体、
+// または共用体を返します。
 //
 // 2. @typeInfo(comptime T: type) @import("std").builtin.TypeInfo
 //
-// Returns information about any type in a TypeInfo union which
-// will contain different information depending on which type
-// you're examining.
+// TypeInfoユニオンに含まれる任意の型に関する情報を返す。
+// これは、どの型を調べるかによって異なる情報を含む。
+//
 //
 // 3. @TypeOf(...) type
 //
-// Returns the type common to all input parameters (each of which
-// may be any expression). The type is resolved using the same
-// "peer type resolution" process the compiler itself uses when
-// inferring types.
+// すべての入力パラメータ（各パラメータは任意の式）に共通する型を返します。
+// この型は、コンパイラが型を推定する際に使用するのと同じ「ピア型解決」プロセスを
+// 使用して解決されます。
 //
-// (Notice how the two functions which return types start with
-// uppercase letters? This is a standard naming practice in Zig.)
+//
+// (型を返す2つの関数が大文字で始まっていることに注目してください。
+// これはZigの標準的な命名方法です)。
 //
 const print = import(std).debug.print; // Oops!
 
@@ -55,42 +55,42 @@ const Narcissus = struct {
 pub fn main() void {
     var narcissus: Narcissus = Narcissus{};
 
-    // Oops! We cannot leave the 'me' and 'myself' fields
-    // undefined. Please set them here:
+    // おっと! me' と 'myself' フィールドを未定義のままにしておくことはできません。
+    // ここで設定してください。
     ??? = &narcissus;
     ??? = &narcissus;
 
-    // This determines a "peer type" from three separate
-    // references (they just happen to all be the same object).
+    // これは3つの別々の参照から「仲間の型」を決定します
+    //（これらは偶然にもすべて同じオブジェクトです）。
     const T1 = @TypeOf(narcissus, narcissus.me.*, narcissus.myself.*);
 
-    // Oh dear, we seem to have done something wrong when calling
-    // this function. It is namespaced to the struct, but doesn't
-    // use the method syntax (there's no self parameter). Please
-    // fix this call:
+    // この関数を呼び出すとき、何か間違ったことをしたようです。
+    // この関数は構造体の名前空間になっていますが、メソッドの構文を使用していません
+    // （self パラメータがありません）
+    // この呼び出しを修正してください。
     const T2 = narcissus.fetchTheMostBeautifulType();
 
     print("A {} loves all {}es. ", .{ T1, T2 });
 
-    //   His final words as he was looking in
-    //   those waters he habitually watched
-    //   were these:
-    //       "Alas, my beloved boy, in vain!"
-    //   The place gave every word back in reply.
-    //   He cried:
-    //            "Farewell."
-    //   And Echo called:
-    //                   "Farewell!"
-    //
-    //     --Ovid, The Metamorphoses
-    //       translated by Ian Johnston
+    //   彼の最後の言葉は、いつも見ていたあの海を
+    //   いつも見ていた水辺で
+    //   こう言った
+    //       「悲しいかな、私の愛する少年よ、無駄だった！」
+    //   その場所は、あらゆる言葉を返してきた。
+    //   彼は泣いた
+    //            "さらばだ"
+    //   そしてエコーは..:
+    //                   "さらばだ！"
+    
+    //     --オービッド『変身』より
+    //       イアン・ジョンストン訳
 
     print("He has room in his heart for:", .{});
 
     // A StructFields array
     const fields = @typeInfo(Narcissus).Struct.fields;
 
-    // 'fields' is a slice of StructFields. Here's the declaration:
+    // 'fields' は StructFields のスライスです。以下はその宣言である。
     //
     //     pub const StructField = struct {
     //         name: []const u8,
@@ -100,9 +100,9 @@ pub fn main() void {
     //         alignment: comptime_int,
     //     };
     //
-    // Please complete these 'if' statements so that the field
-    // name will not be printed if the field is of type 'void'
-    // (which is a zero-bit type that takes up no space at all!):
+    // フィールドの型が 'void' (これはスペースを全く取らないゼロビット型です!) 
+    // の場合、フィールド名が表示されないように、
+    // これらの 'if' ステートメントを完成させてください。
     if (fields[0].??? != void) {
         print(" {s}", .{@typeInfo(Narcissus).Struct.fields[0].name});
     }
@@ -115,13 +115,13 @@ pub fn main() void {
         print(" {s}", .{@typeInfo(Narcissus).Struct.fields[2].name});
     }
 
-    // Yuck, look at all that repeated code above! I don't know
-    // about you, but it makes me itchy.
+    // うっそー、上の繰り返されたコードを見てよ! 
+    // これは痒くなりますね。
     //
-    // Alas, we can't use a regular 'for' loop here because
-    // 'fields' can only be evaluated at compile time.  It seems
-    // like we're overdue to learn about this "comptime" stuff,
-    // doesn't it? :-)
+    // fields' はコンパイル時にしか評価できないので、
+    // ここでは通常の 'for' ループは使えません。
+    // この「コンパイル時」というものを学ぶのは、
+    // もう遅いような気がしますよね :-)
 
     print(".\n", .{});
 }
