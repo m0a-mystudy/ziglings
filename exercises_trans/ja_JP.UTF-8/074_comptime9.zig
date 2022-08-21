@@ -1,49 +1,49 @@
 //
-// In addition to knowing when to use the 'comptime' keyword,
-// it's also good to know when you DON'T need it.
+// ' comptime' キーワードをいつ使うかを知ることに加えて、
+// いつ使う必要がないかを知っておくとよいでしょう。
 //
-// The following contexts are already IMPLICITLY evaluated at
-// compile time, and adding the 'comptime' keyword would be
-// superfluous, redundant, and smelly:
+// 以下のコンテキストはすでにコンパイル時に暗黙のうちに評価されており、 
+// 'comptime' キーワードを追加することは余計で冗長、かつ無意味なことである。
+// 
 //
-//    * The global scope (outside of any function in a source file)
-//    * Type declarations of:
-//        * Variables
-//        * Functions (types of parameters and return values)
-//        * Structs
-//        * Unions
-//        * Enums
-//    * The test expressions in inline for and while loops
-//    * An expression passed to the @cImport() builtin
+//    * グローバルスコープ（ソースファイル内の任意の関数の外側）
+//    * 以下の型宣言:
+//        * Variable変数s
+//        * 関数（パラメータと戻り値の型）
+//        * 構造体 
+//        * ユニオン
+//        * 列挙
+//    * インライン for ループおよび while ループのテスト式
+//    *  @cImport() 組み込み関数に渡される式
 //
-// Work with Zig for a while, and you'll start to develop an
-// intuition for these contexts. Let's work on that now.
+// Zigとしばらく付き合っていると、
+// こうした文脈に対する直感が働くようになります。今、それに取り組んでみましょう。
 //
-// You have been given just one 'comptime' statement to use in
-// the program below. Here it is:
+// 以下のプログラムでは、'comptime'ステートメントを1つだけ使用するように指示されています。
+// これがそれです。
 //
 //     comptime
 //
-// Just one is all it takes. Use it wisely!
+// たった1つでいいんです。賢く使おう!
 //
 const print = @import("std").debug.print;
 
-// Being in the global scope, everything about this value is
-// implicitly required to be known compile time.
+// グローバルスコープにあるため、この値に関するすべての情報は
+// この値は暗黙のうちにコンパイル時に知ることが要求されます。
 const llama_count = 5;
 
-// Again, this value's type and size must be known at compile
-// time, but we're letting the compiler infer both from the
-// return type of a function.
+// ここでも、この値の型とサイズはコンパイル時に知る必要がありますが、
+// ここでは関数の戻り値の型からコンパイラに推測させるようにしています。
+// 
 const llamas = makeLlamas(llama_count);
 
-// And here's the function. Note that the return value type
-// depends on one of the input arguments!
+// そして、これがその関数です。
+// 戻り値の型は入力引数の1つに依存することに注意してください!
 fn makeLlamas(count: usize) [count]u8 {
     var temp: [count]u8 = undefined;
     var i = 0;
 
-    // Note that this does NOT need to be an inline 'while'.
+    // これはインラインの while である必要はないことに注意してください。
     while (i < count) : (i += 1) {
         temp[i] = i;
     }
@@ -55,8 +55,8 @@ pub fn main() void {
     print("My llama value is {}.\n", .{llamas[2]});
 }
 //
-// The lesson here is to not pepper your program with 'comptime'
-// keywords unless you need them. Between the implicit compile
-// time contexts and Zig's aggressive evaluation of any
-// expression it can figure out at compile time, it's sometimes
-// surprising how few places actually need the keyword.
+// ここでの教訓は、必要でない限り、
+// プログラムに 'comptime' キーワードを散りばめないことです。
+// 暗黙のコンパイル時コンテキストと、Zigがコンパイル時に理解できるあらゆる式を
+// 積極的に評価することの間で、このキーワードを実際に必要とする場所が
+// いかに少ないかに驚かされることがあります。
