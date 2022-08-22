@@ -1,8 +1,7 @@
 //
-// The power and purpose of async/await becomes more apparent
-// when we do multiple things concurrently. Foo and Bar do not
-// depend on each other and can happen at the same time, but End
-// requires that they both be finished.
+// 複数のことを同時に行うとき、async/await の威力と目的がより明らかになる。
+// FooとBarは互いに依存せず、同時に起こることができますが、
+// Endでは両方が終了することが必要です。
 //
 //               +---------+
 //               |  Start  |
@@ -18,7 +17,7 @@
 //               |   End   |
 //               +---------+
 //
-// We can express this in Zig like so:
+// これをZigで表現すると次のようになります。
 //
 //     fn foo() u32 { ... }
 //     fn bar() u32 { ... }
@@ -33,7 +32,7 @@
 //
 //     // End
 //
-// Please await TWO page titles!
+// ページタイトルは2つ待ってください。
 //
 const print = @import("std").debug.print;
 
@@ -48,7 +47,7 @@ pub fn main() void {
 }
 
 fn getPageTitle(url: []const u8) []const u8 {
-    // Please PRETEND this is actually making a network request.
+    // これは実際にネットワークリクエストを行っていることを前提にしてください。
     _ = url;
     return "Example Title";
 }
