@@ -1,26 +1,26 @@
 //
-// We were able to get a printable string out of a many-item
-// pointer by using a slice to assert a specific length.
+// スライスを使用して特定の長さを主張することで、
+// 多項目ポインタから印刷可能な文字列を得ることができました。
 //
-// But can we ever GO BACK to a sentinel-terminated pointer
-// after we've "lost" the sentinel in a coercion?
+// しかし、センチネルで終端したポインタの強制終了でセンチネルを失った後、
+// そのポインタに戻ることができるでしょうか？
 //
-// Yes, we can. Zig's @ptrCast() builtin can do this. Check out
-// the signature:
+// はい、できます。Zigの@ptrCast()組み込み関数がこれを可能にします。
+// コードをご覧ください。
 //
 //     @ptrCast(comptime DestType: type, value: anytype) DestType
 //
-// See if you can use it to solve the same many-item pointer
-// problem, but without needing a length!
+// これを用いて、同じ多項目ポインタの問題を、
+// 長さを必要とせずに解決できるかどうか見てみましょう!
 //
 const print = @import("std").debug.print;
 
 pub fn main() void {
-    // Again, we've coerced the sentinel-terminated string to a
-    // many-item pointer, which has no length or sentinel.
+    // ここでも、センチネルで終端する文字列を、
+    // 長さもセンチネルもない多項目ポインタに強制的に変換しています。
     const data: [*]const u8 = "Weird Data!";
 
-    // Please cast 'data' to 'printable':
+    // 'data'を'printable'に変換してください。
     const printable: [*:0]const u8 = ???;
 
     print("{s}\n", .{printable});
