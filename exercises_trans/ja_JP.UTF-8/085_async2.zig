@@ -1,10 +1,10 @@
 //
-// So, 'suspend' returns control to the place from which it was
-// called (the "call site"). How do we give control back to the
-// suspended function?
+// つまり、「suspend」は呼び出された場所（「呼び出し先」）
+// に制御を戻すのです。サスペンドされた関数に制御を戻すには
+// どうすればよいのでしょうか？
 //
-// For that, we have a new keyword called 'resume' which takes an
-// async function invocation's frame and returns control to it.
+// そのために 'resume' という新しいキーワードを用意しました。
+// これは非同期関数呼び出しのフレームを受け取り、そこに制御を戻すものです。
 //
 //     fn fooThatSuspends() void {
 //         suspend {}
@@ -13,7 +13,7 @@
 //     var foo_frame = async fooThatSuspends();
 //     resume foo_frame;
 //
-// See if you can make this program print "Hello async!".
+// このプログラムで "Hello async!"と表示させられるか試してみましょう。
 //
 const print = @import("std").debug.print;
 

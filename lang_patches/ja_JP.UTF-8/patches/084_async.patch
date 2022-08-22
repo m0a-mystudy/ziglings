@@ -1,0 +1,70 @@
+4,11c4,10
+< // 1. The memory space allocated to your program for the
+< // invocation of a function and all of its data is called a
+< // "stack frame".
+< //
+< // 2. The 'return' keyword "pops" the current function
+< // invocation's frame off of the stack (it is no longer needed)
+< // and returns control to the place where the function was
+< // called.
+---
+> // 1.関数とそのすべてのデータを呼び出すために、
+> // プログラムに割り当てられたメモリ空間を「スタックフレーム」と呼びます。
+> //
+> //
+> // 2.キーワード「return」は、現在の関数呼び出しのフレームをスタックから
+> // 「ポップ」し（もう必要ない）、関数が呼び出された場所に制御を戻す。
+> //
+14c13
+< //         return; // Pop the frame and return control
+---
+> //         return; // フレームをポップして制御を戻す
+17,21c16,20
+< // 3. Like 'return', the 'suspend' keyword returns control to the
+< // place where the function was called BUT the function
+< // invocation's frame remains so that it can regain control again
+< // at a later time. Functions which do this are "async"
+< // functions.
+---
+> // 3. 「return」と同様に、「suspend」キーワードは、
+> // 関数が呼び出された場所に制御を戻しますが、
+> // 関数の呼び出し元のフレームは残っているので、後で再び制御を取り戻すことができます。
+> // これを行う関数は「非同期」関数である。
+> //
+24c23
+< //         suspend {} // return control, but leave the frame alone
+---
+> //         suspend {} // 制御を戻すが、フレームはそのままにする
+27,28c26,27
+< // 4. To call any function in async context and get a reference
+< // to its frame for later use, use the 'async' keyword:
+---
+> // 4. 非同期コンテキストで任意の関数を呼び出し、後で使用するために
+> // そのフレームへの参照を取得するには、'async'キーワードを使用します。
+32,35c31,35
+< // 5. If you call an async function without the 'async' keyword,
+< // the function FROM WHICH you called the async function itself
+< // becomes async! In this example, the bar() function is now
+< // async because it calls fooThatSuspends(), which is async.
+---
+> // 5. 'async' キーワードを使わずに非同期関数を呼び出すと、
+> // 非同期関数を呼び出した関数自体が非同期となります! 
+> // この例では、bar()関数は非同期であるfooThatSuspends()を呼び出すので、
+> // 現在非同期です。
+> //
+41c41
+< // 6. The main() function cannot be async!
+---
+> // 6. main()関数は非同期にはできない!
+43,44c43,44
+< // Given facts 3 and 4, how do we fix this program (broken by facts
+< // 5 and 6)?
+---
+> // 事実3と4が与えられたとき、このプログラム（事実5と6によって壊れている）
+> // をどのように修正するか？
+49,50c49,50
+<     // Additional Hint: you can assign things to '_' when you
+<     // don't intend to do anything with them.
+---
+>     // 追加のヒント: 何もするつもりがないのに '_' に代入することができます。
+>     //
