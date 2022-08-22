@@ -1,36 +1,36 @@
 //
-// Struct types are always "anonymous" until we give them a name:
+// 構造体型は、名前を付けるまでは常に「匿名」です。
 //
 //     struct {};
 //
-// So far, we've been giving struct types a name like so:
+// これまでは、次のように構造体タイプに名前を付けていました。
 //
 //     const Foo = struct {};
 //
-// * The value of @typeName(Foo) is "Foo".
+// * @typeName(Foo)の値は "Foo "です。
 //
-// A struct is also given a name when you return it from a
-// function:
+// 構造体は、関数から返すときにも名前が付けられます。
+//
 //
 //     fn Bar() type {
 //         return struct {};
 //     }
 //
-//     const MyBar = Bar();  // store the struct type
-//     const bar = Bar() {}; // create instance of the struct
+//     const MyBar = Bar();  // 構造体型を格納する。
+//     const bar = Bar() {}; // 構造体のインスタンスを作成する。
 //
-// * The value of @typeName(Bar()) is "Bar()".
-// * The value of @typeName(MyBar) is "Bar()".
-// * The value of @typeName(@TypeOf(bar)) is "Bar()".
+// * @typeName(Bar())の値は "Bar() "である。
+// * @typeName(MyBar)の値は "Bar() "である。
+// * @typeName(@TypeOf(bar))の値は "Bar() "である。
 //
-// You can also have completely anonymous structs. The value
-// of @typeName(struct {}) is "struct:<position in source>".
+// 完全に無名の構造体を持つこともできます。typeName(struct {})の値は
+// 「struct:<position in source>」です。
 //
 const print = @import("std").debug.print;
 
-// This function creates a generic data structure by returning an
-// anonymous struct type (which will no longer be anonymous AFTER
-// it's returned from the function).
+// この関数は、匿名構造体型
+// （この関数から返された後は匿名ではなくなります）を返して、
+// 汎用データ構造を作成します。
 fn Circle(comptime T: type) type {
     return struct {
         center_x: T,
@@ -41,12 +41,12 @@ fn Circle(comptime T: type) type {
 
 pub fn main() void {
     //
-    // See if you can complete these two variable initialization
-    // expressions to create instances of circle struct types
-    // which can hold these values:
+    // これらの値を保持することができる円構造体型のインスタンスを作成するために、
+    // これら2つの変数の初期化式を完成させることができるかどうかを確認します。
     //
-    // * circle1 should hold i32 integers
-    // * circle2 should hold f32 floats
+    //
+    // * circle1 は i32 個の整数を保持する必要があります。
+    // * circle2 は f32 浮動小数点数を保持します。
     //
     var circle1 = ??? {
         .center_x = 25,

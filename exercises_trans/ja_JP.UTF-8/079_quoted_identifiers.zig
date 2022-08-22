@@ -1,21 +1,21 @@
 //
-// Sometimes you need to create an identifier that will not, for
-// whatever reason, play by the naming rules:
+// 何らかの理由で命名規則に従わない識別子を作成する必要がある場合があります。
 //
-//     const 55_cows: i32 = 55; // ILLEGAL: starts with a number
-//     const isn't true: bool = false; // ILLEGAL: what even?!
 //
-// If you try to create either of these under normal
-// circumstances, a special Program Identifier Syntax Security
-// Team (PISST) will come to your house and take you away.
+//     const 55_cows: i32 = 55; // ILLEGAL: 数字から始まる。
+//     const isn't true: bool = false; // ILLEGAL: 何が真なんだ!
 //
-// Thankfully, Zig has a way to sneak these wacky identifiers
-// past the authorities: the @"" identifier quoting syntax.
+// 通常の状況でこれらのいずれかを作成しようとすると、
+// 特別なプログラム識別子構文セキュリティチーム（PISST）が
+// あなたの家に来てあなたを連れ去るでしょう。
+//
+// ありがたいことに、Zigはこれらの奇妙な識別子を当局の目を逃れてこっそり
+// 使う方法を知っています：@"" 識別子の引用構文です。
 //
 //     @"foo"
 //
-// Please help us safely smuggle these fugitive identifiers into
-// our program:
+// この逃亡中の識別子を私たちのプログラムに安全に密輸するのを助けてください。
+//
 //
 const print = @import("std").debug.print;
 
