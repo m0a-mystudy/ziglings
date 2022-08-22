@@ -3,25 +3,25 @@
 //  TOP SECRET  TOP SECRET  TOP SECRET  TOP SECRET  TOP SECRET
 // ------------------------------------------------------------
 //
-// Are you ready for the THE TRUTH about Zig string literals?
+// Zig文字列リテラルについてのTHE TRUTHの準備はできたか？
 //
-// Here it is:
+//ここにあります。
 //
 //     @TypeOf("foo") == *const [3:0]u8
 //
-// Which means a string literal is a "constant pointer to a
-// zero-terminated (null-terminated) fixed-size array of u8".
+// つまり、文字列リテラルは
+// 「u8のゼロ終端（ヌル終端）固定サイズ配列への定数ポインタ」である。
 //
-// Now you know. You've earned it. Welcome to the secret club!
+// これでわかっただろう。あなたはそれを獲得したのです。秘密クラブへようこそ!
 //
 // ------------------------------------------------------------
 //
-// Why do we bother using a zero/null sentinel to terminate
-// strings in Zig when we already have a known length?
+// すでに長さがわかっているのに、なぜわざわざ Zig で文字列を終了するために
+// ゼロ/ヌルセンチネルを使うのでしょうか？
 //
-// Versatility! Zig strings are compatible with C strings (which
-// are null-terminated) AND can be coerced to a variety of other
-// Zig types:
+// 汎用性があるからです! Zigの文字列は、C言語の文字列（ヌル終端）と互換性があり、
+// また、他の様々な文字列に強制変換することができます。
+// Zig型に強制することができます。
 //
 //     const a: [5]u8 = "array".*;
 //     const b: *const [16]u8 = "pointer to array";
@@ -30,9 +30,9 @@
 //     const e: [*:0]const u8 = "many-item pointer with sentinel";
 //     const f: [*]const u8 = "many-item pointer";
 //
-// All but 'f' may be printed. (A many-item pointer without a
-// sentinel is not safe to print because we don't know where it
-// ends!)
+// 'f' 以外は表示してもよい。
+// (センチネルのない多項目ポインタは、どこで終わるか分からないので、印刷しても安全ではありません!)
+//
 //
 const print = @import("std").debug.print;
 
@@ -42,24 +42,24 @@ const WeirdContainer = struct {
 };
 
 pub fn main() void {
-    // WeirdContainer is an awkward way to house a string.
+    // WeirdContainer は文字列を格納するための厄介な方法です。
     //
-    // Being a many-item pointer (with no sentinel termination),
-    // the 'data' field "loses" the length information AND the
-    // sentinel termination of the string literal "Weird Data!".
+    // 多項目ポインタ（センチネル終端なし）であるため、
+    // 'data' フィールドは長さ情報と文字列リテラルのセンチネル終端を「失う」
+    //  "Weird Data!
     //
-    // Luckily, the 'length' field makes it possible to still
-    // work with this value.
+    // 幸運にも、'length' フィールドによってこの値をまだ扱うことが可能です。
+    //
     const foo = WeirdContainer{
         .data = "Weird Data!",
         .length = 11,
     };
 
-    // How do we get a printable value from 'foo'? One way is to
-    // turn it into something with a known length. We do have a
-    // length... You've actually solved this problem before!
+    // どのようにして 'foo' から印字可能な値を得るのでしょうか？一つの方法は、
+    // 長さがわかっているものに変えることです。
+    // 実際に 長さ... 実はこの問題、前に解決したことがあるんです!
     //
-    // Here's a big hint: do you remember how to take a slice?
+    // ここで大きなヒントがあります：スライスの取り方を覚えていますか？
     const printable = ???;
 
     print("{s}\n", .{printable});
