@@ -1,22 +1,22 @@
 //
-// Anonymous struct literal syntax can also be used to compose an
-// "anonymous list" with an array type destination:
+// 匿名構造体リテラルの構文は、配列型の出力先で「匿名リスト」を構成するためにも使用できる。
+//
 //
 //     const foo: [3]u32 = .{10, 20, 30};
 //
-// Otherwise it's a "tuple":
+// そうでない場合は「タプル」である。
 //
 //     const bar = .{10, 20, 30};
 //
-// The only difference is the destination type.
+// 唯一の違いは、宛先の型です。
 //
 const print = @import("std").debug.print;
 
 pub fn main() void {
-    // Please make 'hello' a string-like array of u8 WITHOUT
-    // changing the value literal.
+    // 'hello' を文字列のような u8 の配列にしてください。 
+    // 値リテラルを変更せずに
     //
-    // Don't change this part:
+    // 以下の部分は変更しないでください。
     //
     //     = .{'h', 'e', 'l', 'l', 'o'};
     //
