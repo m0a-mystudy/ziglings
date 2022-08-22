@@ -1,12 +1,12 @@
 //
-// You have doubtless noticed that 'suspend' requires a block
-// expression like so:
+// 'suspend'にはこのようなブロック式が必要なことに
+// お気づきでしょうか。
 //
 //     suspend {}
 //
-// The suspend block executes when a function suspends. To get
-// sense for when this happens, please make the following
-// program print the string
+// サスペンドブロックは関数がサスペンドするときに実行されます。
+// どんなときにサスペンドされるかを知るために、
+// 次の文字列を表示するプログラムを作ってみてください。
 //
 //     "ABCDEF"
 //

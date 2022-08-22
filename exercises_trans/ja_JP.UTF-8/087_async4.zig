@@ -1,11 +1,11 @@
 //
-// It has probably not escaped your attention that we are no
-// longer capturing a return value from foo() because the 'async'
-// keyword returns the frame instead.
+// 'async' キーワードは代わりにフレームを返すので、
+// foo() からの戻り値をもはやキャプチャしていないことに、
+// おそらく皆さんは気づかないことはないでしょう。
 //
-// One way to solve this is to use a global variable.
+// これを解決する一つの方法は、グローバル変数を使用することです。
 //
-// See if you can make this program print "1 2 3 4 5".
+// このプログラムで "1 2 3 4 5" と表示させることができるかどうか見てみましょう。
 //
 const print = @import("std").debug.print;
 

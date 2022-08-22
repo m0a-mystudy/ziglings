@@ -1,6 +1,6 @@
 //
-// You can even create anonymous struct literals without field
-// names:
+// フィールド名を持たない無名構造体リテラルを作成することもできます。
+//
 //
 //     .{
 //         false,
@@ -8,37 +8,37 @@
 //         @as(i64, 67.12);
 //     }
 //
-// We call these "tuples", which is a term used by many
-// programming languages for a data type with fields referenced
-// by index order rather than name. To make this possible, the Zig
-// compiler automatically assigns numeric field names 0, 1, 2,
-// etc. to the struct.
+// タプルは、名前ではなくインデックスの順序で参照されるフィールドを持つデータ型として、
+// 多くのプログラミング言語で使われている用語です。
+// これを可能にするために、Zigコンパイラは構造体に数値フィールド名0, 1, 2
+// などを自動的に割り当てます。
 //
-// Since bare numbers are not legal identifiers (foo.0 is a
-// syntax error), we have to quote them with the @"" syntax.
-// Example:
+//
+// 裸の数字は合法的な識別子ではないので（foo.0は構文エラー）
+// @"" 構文で引用する必要がある。
+// 例を示します。
 //
 //     const foo = .{ true, false };
 //
 //     print("{} {}\n", .{foo.@"0", foo.@"1"});
 //
-// The example above prints "true false".
+// 上の例では、"true false" と表示されます。
 //
-// Hey, WAIT A SECOND...
+// ちょっと待てよ...
 //
-// If a .{} thing is what the print function wants, do we need to
-// break our "tuple" apart and put it in another one? No! It's
-// redundant! This will print the same thing:
+// .{} が print 関数の求めるものである場合、
+// 「タプル」を分解して別のものに入れる必要があるか？いいえ！そうではありません。
+// それは冗長です! これは同じものを印刷します。
 //
 //     print("{} {}\n", foo);
 //
-// Aha! So now we know that print() takes a "tuple". Things are
-// really starting to come together now.
+// Aha! これで、print()が「タプル」を受け取ることがわかりました。
+// これで、物事が本当にうまくいき始めました。
 //
 const print = @import("std").debug.print;
 
 pub fn main() void {
-    // A "tuple":
+    // "タプル "です。
     const foo = .{
         true,
         false,
@@ -46,53 +46,52 @@ pub fn main() void {
         @as(f32, 3.141592),
     };
 
-    // We'll be implementing this:
+    // これを実装します。
     printTuple(foo);
 
-    // This is just for fun, because we can:
+        // これはお遊びです、だってできるんだもん。
     const nothing = .{};
     print("\n", nothing);
 }
 
-// Let's make our own generic "tuple" printer. This should take a
-// "tuple" and print out each field in the following format:
+// 汎用的なタプルプリンタを作ってみましょう。これは
+// "タプル "を受け取り、各フィールドを以下のフォーマットでプリントアウトする。
 //
 //     "name"(type):value
 //
-// Example:
+// 例:
 //
 //     "0"(bool):true
 //
-// You'll be putting this together. But don't worry, everything
-// you need is documented in the comments.
+// これを組み立てることになります。しかし、心配しないでください。
+// 必要なものはすべてコメントに書かれています。s
 fn printTuple(tuple: anytype) void {
-    // 1. Get a list of fields in the input 'tuple'
-    // parameter. You'll need:
+    // 1. 入力 'tuple' パラメータでフィールドのリストを取得する。必要である
     //
-    //     @TypeOf() - takes a value, returns its type.
+    //     @TypeOf() - 値を受け取り、その型を返します。
     //
-    //     @typeInfo() - takes a type, returns a TypeInfo union
-    //                   with fields specific to that type.
+    //     @typeInfo() - 型を受け取り、その型に固有のフィールドを持つ
+    //                  TypeInfoユニオンを返す。
     //
-    //     The list of a struct type's fields can be found in
-    //     TypeInfo's Struct.fields.
+    //     構造体型のフィールドのリストはTypeInfoのStruct.fieldsに記載されている。
+    // 
     //
-    //     Example:
+    //     例:
     //
     //         @typeInfo(Circle).Struct.fields
     //
-    // This will be an array of StructFields.
+    // これはStructFieldsの配列になります。
     const fields = ???;
 
-    // 2. Loop through each field. This must be done at compile
-    // time.
+    // 2. 各フィールドをループする。これはコンパイル時に行う必要があります。
     //
-    //     Hint: remember 'inline' loops?
+    //
+    //     ヒント: 'インライン'ループを覚えていますか？
     //
     for (fields) |field| {
-        // 3. Print the field's name, type, and value.
+        // 3. フィールドの名前、型、値を表示する。
         //
-        //     Each 'field' in this loop is one of these:
+        //     このループ内の各「フィールド」は、これらのうちの1つです。
         //
         //         pub const StructField = struct {
         //             name: []const u8,
@@ -102,20 +101,19 @@ fn printTuple(tuple: anytype) void {
         //             alignment: comptime_int,
         //         };
         //
-        //     You'll need this builtin:
+        //     この組み込み関数が必要です。:
         //
         //         @field(lhs: anytype, comptime field_name: []const u8)
         //
-        //     The first parameter is the value to be accessed,
-        //     the second parameter is a string with the name of
-        //     the field you wish to access. The value of the
-        //     field is returned.
+        //     第1パラメータはアクセスする値です
+        //     第2パラメータはアクセスしたいフィールドの名前を表す文字列。
+        //     フィールドの値が返される。
         //
-        //     Example:
+        //     例:
         //
-        //         @field(foo, "x"); // returns the value at foo.x
+        //         @field(foo, "x"); //  foo.x の値を返す。
         //
-        // The first field should print as: "0"(bool):true
+        // 最初のフィールドは次のように表示されるはずです。: "0"(bool):true
         print("\"{s}\"({any}):{any} ", .{
             field.???,
             field.???,
