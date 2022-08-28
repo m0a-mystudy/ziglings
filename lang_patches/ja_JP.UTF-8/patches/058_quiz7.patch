@@ -142,7 +142,7 @@
 <             // in a switch statement. Please capture both values as
 <             // 'p' so the print statements work!
 ---
->             // // おっと！？わらし仙人は、switch文の中で、
+>             // おっと！？仙人は、switch文の中で、
 >             // ユニオンの値をどのようにキャプチャするか忘れてしまいました。
 >             // 両方の値を  'p'として捕捉してください。そうすればprint文は機能します!
 201,206c201,206
@@ -218,7 +218,7 @@
 259c259
 <             // Try to make your answer this long:__________;
 ---
->             //  これくらいの長さの答えにしてみてください：__________;
+>             // これくらいの長さの答えにしてみてください：__________;
 264,267c264,266
 <     // The checkNote() method is the beating heart of the magical
 <     // notebook. Given a new note in the form of a NotebookEntry

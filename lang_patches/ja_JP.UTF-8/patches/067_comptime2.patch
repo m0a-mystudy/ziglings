@@ -12,7 +12,7 @@
 < // at compile time.
 ---
 > // 変数宣言の前に置かれた 'comptime' は、
-> // その変数のすべての使用法がコンパイル時に実行されることを保証する。
+> // その変数のすべての使用法がコンパイル時に実行されることを保証します。
 16c15,16
 < // As a simple example, compare these two statements:
 ---

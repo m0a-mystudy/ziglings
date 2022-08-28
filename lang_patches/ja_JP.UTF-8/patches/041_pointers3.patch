@@ -3,9 +3,9 @@
 < // to the ability to change what the pointer POINTS TO, not the ability
 < // to change the VALUE at that location!
 ---
-> // トリッキーなのは、ポインタの変更可能性（var vs const）です。
-> // ポインタが指す先を変更できることであり、その場所の値を変更できることではありません。
-> // その場所の値を変更する能力ではありません。
+> // 厄介なのは、ポインタの変更可能性（var vs const）とは、
+> // ポインタの指す先を変更する能力であり、
+> // その場所の値を変更する能力ではないことです。
 12,13c12,13
 < // Both p1 and p2 point to constant values which cannot change. However,
 < // p2 can be changed to point to something else and p1 cannot!

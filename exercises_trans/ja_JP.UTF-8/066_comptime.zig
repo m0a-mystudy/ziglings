@@ -31,9 +31,9 @@
 const print = @import("std").debug.print;
 
 pub fn main() void {
-    // Zig の全ての数値リテラルは comptime_int 型または
-    // comptime_float 型です。これらは任意の大きさです（必要なだけ大きくても小さくても構いません）。
-    // これらは任意のサイズです（必要なだけ大きくても小さくても構いません）．
+    // Zig の全ての数値リテラルは comptime_int 型または comptime_float 型です。
+    // これらは任意の大きさです（必要なだけ大きくても小さくても構いません）。
+    // 
     //
     // const" で識別子を固定的に割り当てる場合、"u8"、"i32"、"f64" 
     // のようなサイズを指定する必要がないことに注意してください。
@@ -48,7 +48,7 @@ pub fn main() void {
 
     print("Immutable: {}, {d:.3}; ", .{ const_int, const_float });
 
-    //  しかし、"var "を使って全く同じ値をミュータブルに識別子に代入すると、
+    // しかし、"var "を使って全く同じ値をミュータブルに識別子に代入すると、
     // 何かが変わる。
     //
     // リテラルは comptime_int と comptime_float のままですが、

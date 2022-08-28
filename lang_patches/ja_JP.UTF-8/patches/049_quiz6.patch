@@ -14,6 +14,10 @@
 < // Now that we have tails all figured out, can you implement trunks?
 ---
 > // 尾っぽは全部わかったから、鼻を実装してくれない？
+20c20
+<         return self.tail.?; // Remember, this means "orelse unreachable"
+---
+>         return self.tail.?; // "orelse unreachable" を意味することを忘れないでください。
 27c27
 <     // Your Elephant trunk methods go here!
 ---

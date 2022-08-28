@@ -17,7 +17,7 @@ const print = @import("std").debug.print;
 
 // 3つの構造体を定義してみましょう。Duck、RubberDuck、Duct
 // DuckとRubberDuckは、名前空間で宣言されたwaddle()とquack()メソッドを含んでいることに
-// 注意してください（「decl」とも呼ばれます
+// 注意してください
 
 const Duck = struct {
     eggs: u8,

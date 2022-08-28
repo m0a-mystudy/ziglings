@@ -8,7 +8,7 @@
 < // declaration is much less verbose.
 ---
 > // Zig が配列の大きさを推測できるときは、'_' をサイズ指定に使用できます。
-> //そうすることでZigにサイズをを推測させることもでき
+> // そうすることでZigにサイズをを推測させることもでき
 > // 宣言がより冗長にならずに済みます。
 12c12
 < // Get values of an array using array[index] notation:
@@ -49,7 +49,7 @@
 ---
 >     // (問題 2)
 >     // この式を完成させる必要があるようです。上の例を使って
->     // 上記の例を使用して、"fourth" を some_primes 配列の 4 番目の要素に設定します。
+>     // "fourth" を some_primes 配列の 4 番目の要素に設定します。
 45,46c45,46
 <     // (Problem 3)
 <     // Use the len property to get the length of the array:

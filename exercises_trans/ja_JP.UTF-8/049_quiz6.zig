@@ -17,7 +17,7 @@ const Elephant = struct {
 
     // Elephant tail methods!
     pub fn getTail(self: *Elephant) *Elephant {
-        return self.tail.?; // Remember, this means "orelse unreachable"
+        return self.tail.?; // "orelse unreachable" を意味することを忘れないでください。
     }
 
     pub fn hasTail(self: *Elephant) bool {

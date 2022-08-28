@@ -47,12 +47,12 @@
 < // Now, please zap the alien structs until they're all gone or
 < // Earth will be doomed!
 ---
-> // さて、エイリアンの構造体がすべてなくなるまで、ザッピングしてください。
-> // 地球は滅亡する!
+> // さあ、エイリアンの構造物がなくなるまで、攻撃してください。
+> // さもないと、地球は破滅します!
 48c48
 < // Look at this hideous Alien struct. Know your enemy!
 ---
-> // この醜いエイリアンの構造を見てください。敵を知れ!
+> // この醜いエイリアンの構造体を見てください。敵を知れ!
 52c52
 <     // We hate this method:
 ---
@@ -84,7 +84,7 @@
 91c91
 <             // *** Zap the alien with the heat ray here! ***
 ---
->             // *** ここで熱線でエイリアンをザッピング! ***
+>             // *** 熱線でエイリアンをやっつけろ! ***
 94c94
 <             // If the alien's health is still above 0, it's still alive.
 ---

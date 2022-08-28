@@ -3,8 +3,8 @@
 < // sequence of lowercase letters where uppercase 'S' is the
 < // sentinel, indicating the end of the sequence:
 ---
-> // センチネルはデータの終端を示す。
-> // 大文字の 'S' がセンチネルとなり、
+> // センチネルとはデータの終端のことです。
+> // 大文字の 'S' がセンチネル(終端)となり、
 > // 小文字のシーケンスの終わりを示すと想像してみよう。
 8,10c8,10
 < // If our sequence also allows for uppercase letters, 'S' would
@@ -23,7 +23,7 @@
 < // value 0. ASCII and Unicode call this the "Null Character".
 ---
 > // 文字列の終わりを示すのによく使われるのは、値 0 です。
-> // ASCIIとUnicodeはこれを「Null文字」と呼んでいる。
+> // ASCIIとUnicodeはこれを「Null文字」と呼んでいます。
 18c18
 < // Zig supports sentinel-terminated arrays, slices, and pointers:
 ---
