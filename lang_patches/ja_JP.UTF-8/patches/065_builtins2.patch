@@ -1,7 +1,7 @@
 2c2
 < // Zig has builtins for mathematical operations such as...
 ---
-> // Zigには、以下のような数学演算のためのビルトインがあります。
+> // Zigには、以下のような数学演算のための組み込み関数があります。
 7c7
 < // ...and lots of type casting operations such as...
 ---
@@ -12,7 +12,7 @@
 < // a bad use of your time. There are some seriously cool features
 < // in there. Check out @call, @compileLog, @embedFile, and @src!
 ---
-> // 雨の日に、公式 Zig ドキュメントにあるビルトインの完全なリストにざっと
+> // 雨の日に、公式 Zig ドキュメントにある組み込み関数の完全なリストにざっと
 > // 目を通すのも悪くない時間の使い方でしょう。
 > // そこにあるのは、とてもクールな機能です。
 > // call、@compileLog、@embedFile、@srcをチェックしてみてください。
@@ -20,12 +20,8 @@
 < // For now, we're going to complete our examination of builtins
 < // by exploring just THREE of Zig's MANY introspection abilities:
 ---
-> // 今のところ、私たちはビルトインの調査を完了させるつもりです。
-> // Zigの多くのイントロスペクション能力のうち、3つだけを調べます。
-22c22
-< // 1. @This() type
----
-> // 1. This() 型
+> // とりあえず、Zigの数あるイントロスペクション能力のうち、3つだけを調べて、
+> // 組み込み件数の検証を完了します。
 24,25c24,25
 < // Returns the innermost struct, enum, or union that a function
 < // call is inside.
@@ -56,6 +52,10 @@
 ---
 > // (型を返す2つの関数が大文字で始まっていることに注目してください。
 > // これはZigの標準的な命名方法です)。
+43c43
+< const print = import(std).debug.print; // Oops!
+---
+> const print = import(std).debug.print; // おっと！
 58,59c58,59
 <     // Oops! We cannot leave the 'me' and 'myself' fields
 <     // undefined. Please set them here:

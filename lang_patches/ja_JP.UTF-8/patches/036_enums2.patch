@@ -3,7 +3,7 @@
 < // numbering up to the compiler, or you can assign them
 < // explicitly. You can even specify the numeric type used.
 ---
-> // 列挙型は実際には単なる数値の集合です。番号付けはコンパイラに
+> // enum型は実際には単なる数値の集合です。番号付けはコンパイラに
 > // 任せることができますし、明示的に割り当てることもできます。
 > // 使用する数値型も指定できます。
 8,10c8,10

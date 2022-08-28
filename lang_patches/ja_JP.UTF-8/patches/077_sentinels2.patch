@@ -1,7 +1,7 @@
 6c6
 < // Are you ready for the THE TRUTH about Zig string literals?
 ---
-> // Zig文字列リテラルについてのTHE TRUTHの準備はできたか？
+> // Zig文字列リテラルについての真実を知る準備は？
 8c8
 < // Here it is:
 ---
@@ -44,8 +44,8 @@
 >     // WeirdContainer は文字列を格納するための厄介な方法です。
 >     //
 >     // 多項目ポインタ（センチネル終端なし）であるため、
->     // 'data' フィールドは長さ情報と文字列リテラルのセンチネル終端を「失う」
->     //  "Weird Data!
+>     // 「data」フィールドは長さ情報と文字列リテラル「Weird Data！」の
+>     // センチネル終端を「失います」。
 47,49c51
 <     // Being a many-item pointer (with no sentinel termination),
 <     // the 'data' field "loses" the length information AND the

@@ -29,7 +29,7 @@
 ---
 > // 3つの構造体を定義してみましょう。Duck、RubberDuck、Duct
 > // DuckとRubberDuckは、名前空間で宣言されたwaddle()とquack()メソッドを含んでいることに
-> // 注意してください（「decl」とも呼ばれます
+> // 注意してください
 53,54c53,54
 <         // Assigning an expression to '_' allows us to safely
 <         // "use" the value while also ignoring it.

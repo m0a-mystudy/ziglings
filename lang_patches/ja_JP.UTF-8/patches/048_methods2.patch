@@ -2,8 +2,8 @@
 < // Now that we've seen how methods work, let's see if we can help
 < // our elephants out a bit more with some Elephant methods.
 ---
-> // メソッドがどのように機能するかを見てきましたので、いくつかの Elephantのメソッドで
-> // 私たちの象をもう少し助けられるか見てみましょう。
+> // メソッドがどのように機能するかを見てきましたので、いくつかの Elephant(象)のメソッドで
+> // 象たちをもう少し助けられるか見てみましょう。
 12c12
 <     // New Elephant methods!
 ---
@@ -39,8 +39,8 @@
 < // if anyone could find instances of enum methods in the wild. The
 < // first five pull requests were accepted and here they are:
 ---
-> // Zigの列挙型はメソッドを持つこともできる! このコメントは、もともと
-> // enum メソッドのインスタンスを見つけることができるかどうか。その結果
+> // Zigのenumはメソッドを持つこともできる! このコメントはもともと、
+> // enum メソッドのインスタンスを見つけられる人がいるかどうかを質問したものです。その結果
 > // 最初の 5 つのプルリクエストが受け入れられましたので、ここに紹介します。
 68c68
 < // 1) drforester - I found one in the Zig source:

@@ -32,7 +32,7 @@
 < // Remember Narcissus from exercise 065 where we used builtins
 < // for reflection? He's back and loving it.
 ---
-> // 練習問題 065 で、リフレクションのためにビルトインを使用した Narcissus を覚えていますか？彼は復活して、
+> // 練習問題 065 で、リフレクションのために組み込み関数を使用した Narcissus を覚えていますか？彼は復活して、
 > // それを気に入っています。
 34,36c34,36
 <     // Last time we examined the Narcissus struct, we had to
@@ -53,6 +53,6 @@
 <     // 065 and compare what you've written to the abomination we
 <     // had there!
 ---
->     // これができたら、エクササイズに戻って見てください。
->     // 065 に戻って、あなたが書いたものを、私たちが書いた醜態と
+>     // これができたら、エクササイズ065に戻って見てください。
+>     // あなたが書いたものを、私たちが書いた醜態と
 >     // 比較してみてください。

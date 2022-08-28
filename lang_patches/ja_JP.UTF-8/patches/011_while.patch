@@ -25,7 +25,7 @@
 23c23
 <     // Please use a condition that is true UNTIL "n" reaches 1024:
 ---
->     // n "が1024になった時点で真となる条件を使用してください。
+>     // n "が1024になった時点でfalseとなる条件を使用してください。
 25c25
 <         // Print the current number
 ---
