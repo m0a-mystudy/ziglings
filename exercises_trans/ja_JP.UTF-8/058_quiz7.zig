@@ -189,7 +189,7 @@ const TripItem = union(enum) {
     // 小さなヘルパー関数です。
     fn printMe(self: TripItem) void {
         switch (self) {
-            // // おっと！？わらし仙人は、switch文の中で、
+            // おっと！？仙人は、switch文の中で、
             // ユニオンの値をどのようにキャプチャするか忘れてしまいました。
             // 両方の値を  'p'として捕捉してください。そうすればprint文は機能します!
             .place => print("{s}", .{p.name}),
@@ -256,7 +256,7 @@ const HermitsNotebook = struct {
             // アドレスを「&」演算子で返すことを覚えておいてください。
             // 
             if (place == entry.*.?.place) return entry;
-            //  これくらいの長さの答えにしてみてください：__________;
+            // これくらいの長さの答えにしてみてください：__________;
         }
         return null;
     }

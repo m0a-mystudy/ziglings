@@ -42,7 +42,7 @@
 < // Please fix this program so that the types can hold the desired values
 < // and the errors go away!
 ---
-> // 型が望ましい値を保持できるようにこのプログラムを修正してください。
+> // 型が望ましい値を保持できるように
 > // そして、エラーがなくなるようにこのプログラムを修正してください
 44,49c44,49
 <     // There are no errors in the next line, just explanation:

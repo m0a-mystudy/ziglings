@@ -14,8 +14,8 @@
 < // We have the start of an error set, but we're missing the condition
 < // "TooSmall". Please add it where needed!
 ---
-> // エラーセットの開始点はりますが、条件に
-> // "TooSmall "がありません。必要なところに追加してください!
+> // エラーセットの開始はできているが、条件 "TooSmall" が抜けている。
+> // 必要なところに追加してください!
 40,41c40,41
 < // Notice how this function can return any member of the MyNumberError
 < // error set.

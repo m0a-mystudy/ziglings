@@ -20,7 +20,7 @@ const std = @import("std");
 pub fn main() void {
     var n: u32 = 2;
 
-    // n "が1024になった時点で真となる条件を使用してください。
+    // n "が1024になった時点でfalseとなる条件を使用してください。
     while (???) {
         //  現在の数値を表示する
         std.debug.print("{} ", .{n});

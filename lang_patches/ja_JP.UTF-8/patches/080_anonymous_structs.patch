@@ -5,7 +5,7 @@
 6c6
 < // So far, we've been giving struct types a name like so:
 ---
-> // これまでは、次のように構造体タイプに名前を付けていました。
+> // これまでは、次のように構造体型に名前を付けていました。
 10c10,12
 < // * The value of @typeName(Foo) is "Foo".
 ---

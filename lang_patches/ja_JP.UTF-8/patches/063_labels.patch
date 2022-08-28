@@ -69,7 +69,7 @@
 <     // make a meal. The default meal is macaroni and cheese.
 ---
 >     // Cafeteria Customer Note: 全ての食材の組み合わせで食事が出来るわけではありません。
->     // お料理をお作りします。デフォルトの食事はマカロニ・アンド・チーズです。
+>     // お料理をお作りします。デフォルトの食事は"Mac & Cheese"です。
 99,102c99,102
 <     // Software Developer Note: Hard-coding the ingredient
 <     // numbers (based on array position) will be fine for our
