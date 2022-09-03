@@ -52,10 +52,6 @@
 ---
 > // (型を返す2つの関数が大文字で始まっていることに注目してください。
 > // これはZigの標準的な命名方法です)。
-43c43
-< const print = import(std).debug.print; // Oops!
----
-> const print = import(std).debug.print; // おっと！
 58,59c58,59
 <     // Oops! We cannot leave the 'me' and 'myself' fields
 <     // undefined. Please set them here:
@@ -68,17 +64,25 @@
 ---
 >     // これは3つの別々の参照から「仲間の型」を決定します
 >     //（これらは偶然にもすべて同じオブジェクトです）。
-67,70c67,70
+67,69c67,69
 <     // Oh dear, we seem to have done something wrong when calling
-<     // this function. It is namespaced to the struct, but doesn't
-<     // use the method syntax (there's no self parameter). Please
-<     // fix this call:
+<     // this function. We called it as a method, which would work
+<     // if it had a self parameter. But it doesn't. (See above.)
 ---
 >     // この関数を呼び出すとき、何か間違ったことをしたようです。
->     // この関数は構造体の名前空間になっていますが、メソッドの構文を使用していません
->     // （self パラメータがありません）
->     // この呼び出しを修正してください。
-75,86c75,86
+>     // メソッドとして呼び出したので、セルフパラメータを持っていれば
+>     // うまくいくはずです。しかし、そうではありません。(上記参照)
+71,72c71,72
+<     // The fix for this is very subtle, but it makes a big
+<     // difference!
+---
+>     // この修正は非常に微妙なものですが、大きな違いがあります!
+>     // 
+75c75
+<     // Now we print a pithy statement about Narcissus.
+---
+>     // 今度はNarcissusについてのピタリとした文章を出力します。
+81,92c81,92
 <     //   His final words as he was looking in
 <     //   those waters he habitually watched
 <     //   were these:
@@ -104,11 +108,11 @@
 >     
 >     //     --オービッド『変身』より
 >     //       イアン・ジョンストン訳
-93c93
+99c99
 <     // 'fields' is a slice of StructFields. Here's the declaration:
 ---
 >     // 'fields' は StructFields のスライスです。以下はその宣言である。
-103,105c103,105
+109,111c109,111
 <     // Please complete these 'if' statements so that the field
 <     // name will not be printed if the field is of type 'void'
 <     // (which is a zero-bit type that takes up no space at all!):
@@ -116,19 +120,42 @@
 >     // フィールドの型が 'void' (これはスペースを全く取らないゼロビット型です!) 
 >     // の場合、フィールド名が表示されないように、
 >     // これらの 'if' ステートメントを完成させてください。
-118,119c118,119
+124,125c124,125
 <     // Yuck, look at all that repeated code above! I don't know
 <     // about you, but it makes me itchy.
 ---
 >     // うっそー、上の繰り返されたコードを見てよ! 
 >     // これは痒くなりますね。
-121,124c121,124
+127,130c127,129
 <     // Alas, we can't use a regular 'for' loop here because
 <     // 'fields' can only be evaluated at compile time.  It seems
 <     // like we're overdue to learn about this "comptime" stuff,
-<     // doesn't it? :-)
+<     // doesn't it? Don't worry, we'll get there.
 ---
->     // fields' はコンパイル時にしか評価できないので、
->     // ここでは通常の 'for' ループは使えません。
->     // この「コンパイル時」というものを学ぶのは、
->     // もう遅いような気がしますよね :-)
+>     // なぜなら、'fields' はコンパイル時にしか評価されないからです。 
+>     // この「コンパイル時」について学ぶのはもう過去のことのように思えますが、
+>     // いかがでしたでしょうか？心配しなくても、そのうちわかるようになりますよ。
+135,142c134,141
+< // NOTE: This exercise did not originally include the function below.
+< // But a change after Zig 0.10.0 added the source file name to the
+< // type. "Narcissus" became "065_builtins2.Narcissus".
+< //
+< // To fix this, I've added this function to strip the filename from
+< // the front of the type name in the dumbest way possible. (It returns
+< // a slice of the type name starting at character 14 (assuming
+< // single-byte characters).
+---
+> // NOTE: この演習では、もともと以下のような関数は含まれていませんでした。
+> // しかし、Zig 0.10.0以降の変更で、型にソースファイル名が追加され、
+> // "Narcissus "は "065_builtins2.Narcissus "になりました。
+> //
+> // この問題を解決するために、
+> // 私はこの関数を追加しました。
+> // (これは、型名の14文字目から始まるスライスを返します
+> // (半角文字を想定しています))。
+144,145c143,144
+< // We'll be seeing @typeName again in Exercise 070. For now, you can
+< // see that it takes a Type and returns a u8 "string".
+---
+> // 練習問題070で@typeNameを再び見ることになります。今のところ、あなたは
+> // Typeを受け取ってu8の "文字列 "を返していることがわかれば良いでしょう

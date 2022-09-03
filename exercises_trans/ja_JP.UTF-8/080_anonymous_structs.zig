@@ -1,5 +1,5 @@
 //
-// 構造体型は、名前を付けるまでは常に「匿名」です。
+// 構造体型は、名前を付けるまでは常に「anonymous(匿名)」です。
 //
 //     struct {};
 //
@@ -7,9 +7,9 @@
 //
 //     const Foo = struct {};
 //
-// * @typeName(Foo)の値は "Foo "です。
+// * @typeName(Foo) の値は "<filename>.Foo"です。
 //
-// 構造体は、関数から返すときにも名前が付けられます。
+// 構造体は、関数から返すときにも名前が与えられます。
 //
 //
 //     fn Bar() type {
@@ -61,16 +61,25 @@ pub fn main() void {
     };
 
     print("[{s}: {},{},{}] ", .{
-        @typeName(@TypeOf(circle1)),
+        stripFname(@typeName(@TypeOf(circle1))),
         circle1.center_x,
         circle1.center_y,
         circle1.radius,
     });
 
     print("[{s}: {d:.1},{d:.1},{d:.1}]\n", .{
-        @typeName(@TypeOf(circle2)),
+        stripFname(@typeName(@TypeOf(circle2))),
         circle2.center_x,
         circle2.center_y,
         circle2.radius,
     });
 }
+
+// Ex.065の型名の「ナルシスト的(narcissistic)修正」を覚えていますか？
+// ここで同じことをします。ハードコードされたスライスを使用して型名を返します。
+// これは出力がより美しく見えるようにするためです。自分の虚栄心を満足させてください。
+// プログラマは美しいのです。
+fn stripFname(mytype: []const u8) []const u8 {
+    return mytype[22..];
+}
+// 上記コードは、「本物」のプログラムでは即赤信号ものです。
