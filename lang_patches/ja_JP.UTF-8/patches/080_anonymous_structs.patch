@@ -1,17 +1,17 @@
 2c2
 < // Struct types are always "anonymous" until we give them a name:
 ---
-> // 構造体型は、名前を付けるまでは常に「匿名」です。
+> // 構造体型は、名前を付けるまでは常に「anonymous(匿名)」です。
 6c6
 < // So far, we've been giving struct types a name like so:
 ---
 > // これまでは、次のように構造体型に名前を付けていました。
 10c10,12
-< // * The value of @typeName(Foo) is "Foo".
+< // * The value of @typeName(Foo) is "<filename>.Foo".
 ---
-> // * @typeName(Foo)の値は "Foo "です。
+> // * @typeName(Foo) の値は "<filename>.Foo"です。
 > //
-> // 構造体は、関数から返すときにも名前が付けられます。
+> // 構造体は、関数から返すときにも名前が与えられます。
 12,13d13
 < // A struct is also given a name when you return it from a
 < // function:
@@ -57,3 +57,17 @@
 ---
 >     // * circle1 は i32 個の整数を保持する必要があります。
 >     // * circle2 は f32 浮動小数点数を保持します。
+78,81c78,81
+< // Perhaps you remember the "narcissistic fix" for the type name
+< // in Ex. 065? We're going to do the same thing here: use a hard-
+< // coded slice to return the type name. That's just so our output
+< // look prettier. Indulge your vanity. Programmers are beautiful.
+---
+> // Ex.065の型名の「ナルシスト的(narcissistic)修正」を覚えていますか？
+> // ここで同じことをします。ハードコードされたスライスを使用して型名を返します。
+> // これは出力がより美しく見えるようにするためです。自分の虚栄心を満足させてください。
+> // プログラマは美しいのです。
+85c85
+< // The above would be an instant red flag in a "real" program.
+---
+> // 上記コードは、「本物」のプログラムでは即赤信号ものです。

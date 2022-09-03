@@ -40,12 +40,12 @@
 // (型を返す2つの関数が大文字で始まっていることに注目してください。
 // これはZigの標準的な命名方法です)。
 //
-const print = import(std).debug.print; // おっと！
+const print = @import("std").debug.print;
 
 const Narcissus = struct {
     me: *Narcissus = undefined,
     myself: *Narcissus = undefined,
-    echo: void = undefined,
+    echo: void = undefined, // Alas, poor Echo!
 
     fn fetchTheMostBeautifulType() type {
         return @This();
@@ -57,20 +57,26 @@ pub fn main() void {
 
     // おっと! me' と 'myself' フィールドを未定義のままにしておくことはできません。
     // ここで設定してください。
-    ??? = &narcissus;
-    ??? = &narcissus;
+    narcissus.me = &narcissus;
+    narcissus.??? = ???;
 
     // これは3つの別々の参照から「仲間の型」を決定します
     //（これらは偶然にもすべて同じオブジェクトです）。
-    const T1 = @TypeOf(narcissus, narcissus.me.*, narcissus.myself.*);
+    const Type1 = @TypeOf(narcissus, narcissus.me.*, narcissus.myself.*);
 
     // この関数を呼び出すとき、何か間違ったことをしたようです。
-    // この関数は構造体の名前空間になっていますが、メソッドの構文を使用していません
-    // （self パラメータがありません）
-    // この呼び出しを修正してください。
-    const T2 = narcissus.fetchTheMostBeautifulType();
+    // メソッドとして呼び出したので、セルフパラメータを持っていれば
+    // うまくいくはずです。しかし、そうではありません。(上記参照)
+    //
+    // この修正は非常に微妙なものですが、大きな違いがあります!
+    // 
+    const Type2 = narcissus.fetchTheMostBeautifulType();
 
-    print("A {} loves all {}es. ", .{ T1, T2 });
+    // 今度はNarcissusについてのピタリとした文章を出力します。
+    print("A {s} loves all {s}es. ", .{
+        maximumNarcissism(Type1),
+        maximumNarcissism(Type2),
+    });
 
     //   彼の最後の言葉は、いつも見ていたあの海を
     //   いつも見ていた水辺で
@@ -118,10 +124,25 @@ pub fn main() void {
     // うっそー、上の繰り返されたコードを見てよ! 
     // これは痒くなりますね。
     //
-    // fields' はコンパイル時にしか評価できないので、
-    // ここでは通常の 'for' ループは使えません。
-    // この「コンパイル時」というものを学ぶのは、
-    // もう遅いような気がしますよね :-)
+    // なぜなら、'fields' はコンパイル時にしか評価されないからです。 
+    // この「コンパイル時」について学ぶのはもう過去のことのように思えますが、
+    // いかがでしたでしょうか？心配しなくても、そのうちわかるようになりますよ。
 
     print(".\n", .{});
+}
+
+// NOTE: この演習では、もともと以下のような関数は含まれていませんでした。
+// しかし、Zig 0.10.0以降の変更で、型にソースファイル名が追加され、
+// "Narcissus "は "065_builtins2.Narcissus "になりました。
+//
+// この問題を解決するために、
+// 私はこの関数を追加しました。
+// (これは、型名の14文字目から始まるスライスを返します
+// (半角文字を想定しています))。
+//
+// 練習問題070で@typeNameを再び見ることになります。今のところ、あなたは
+// Typeを受け取ってu8の "文字列 "を返していることがわかれば良いでしょう
+fn maximumNarcissism(myType: anytype) []const u8 {
+    // Turn '065_builtins2.Narcissus' into 'Narcissus'
+    return @typeName(myType)[14..];
 }
